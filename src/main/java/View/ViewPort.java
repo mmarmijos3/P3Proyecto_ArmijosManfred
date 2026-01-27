@@ -1,6 +1,7 @@
 package View;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -18,6 +19,54 @@ public class ViewPort extends javax.swing.JFrame {
     public JButton getBtnGoMenu() {
         return btnGoMenu;
     }
+
+    public JButton getBtnSave() {
+        return btnSave;
+    }
+
+    public String getTypeForm() {
+        return cbxType.getSelectedItem().toString();
+    }
+    
+    
+    
+    public String getCategoryForm() {
+        return cbxCategory.getSelectedItem().toString();
+    }
+
+    public void showErrorCategory() {
+        lblErrorCategory.setText("please select one");
+    }
+
+    public JLabel showlErrorName() {
+        return lblErrorName;
+    }
+
+    public JLabel showErrorQuantity() {
+        return lblErrorQuantity;
+    }
+
+    public JLabel showErrorType() {
+        return lblErrorType;
+    }
+
+
+    public String getIMO() {
+        return txfIMO.getSelectedText();
+    }
+
+    public String getTxfName() {
+        return txfName.getSelectedText();
+    }
+
+    public String getTxfSearch() {
+        return txfSearch.getSelectedText();
+    }
+
+    public String getTxfQuantity() {
+        return txfQuantity.getSelectedText();
+    }
+    
     
     
 
@@ -33,15 +82,17 @@ public class ViewPort extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblFormTitle = new javax.swing.JLabel();
-        btnForm = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         txfName = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        txfName4 = new javax.swing.JTextField();
+        lblErrorName = new javax.swing.JLabel();
+        lblErrorCategory = new javax.swing.JLabel();
+        txfQuantity = new javax.swing.JTextField();
+        cbxCategory = new javax.swing.JComboBox<>();
         cbxType = new javax.swing.JComboBox<>();
-        txfName5 = new javax.swing.JTextField();
-        cbxType1 = new javax.swing.JComboBox<>();
-        txfName6 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        txfIMO = new javax.swing.JTextField();
+        lblErrorIMO = new javax.swing.JLabel();
+        lblErrorType = new javax.swing.JLabel();
+        lblErrorQuantity = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -50,7 +101,7 @@ public class ViewPort extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         btnGoMenu = new javax.swing.JButton();
-        txfName2 = new javax.swing.JTextField();
+        txfSearch = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,17 +122,12 @@ public class ViewPort extends javax.swing.JFrame {
         lblFormTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblFormTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblFormTitle.setText("VESSEL FORM");
-        jPanel2.add(lblFormTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        jPanel2.add(lblFormTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
 
-        btnForm.setBackground(new java.awt.Color(0, 193, 212));
-        btnForm.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnForm.setText("Next");
-        btnForm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFormActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, 200, 50));
+        btnSave.setBackground(new java.awt.Color(0, 193, 212));
+        btnSave.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnSave.setText("SAVE");
+        jPanel2.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, 200, 50));
 
         txfName.setBackground(new java.awt.Color(30, 40, 53));
         txfName.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -90,80 +136,64 @@ public class ViewPort extends javax.swing.JFrame {
         txfName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Name", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
         txfName.setCaretColor(new java.awt.Color(255, 255, 255));
         txfName.setPreferredSize(new java.awt.Dimension(500, 75));
-        txfName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfNameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txfName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+        jPanel2.add(txfName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel1.setText("jLabel1");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 100, 20));
+        lblErrorName.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel2.add(lblErrorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 440, 20));
 
-        txfName4.setBackground(new java.awt.Color(30, 40, 53));
-        txfName4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txfName4.setForeground(new java.awt.Color(255, 255, 255));
-        txfName4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txfName4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "IMO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        txfName4.setCaretColor(new java.awt.Color(255, 255, 255));
-        txfName4.setPreferredSize(new java.awt.Dimension(500, 75));
-        txfName4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfName4ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txfName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
+        lblErrorCategory.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorCategory.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel2.add(lblErrorCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 440, 20));
+
+        txfQuantity.setBackground(new java.awt.Color(30, 40, 53));
+        txfQuantity.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txfQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        txfQuantity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txfQuantity.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Quantity", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        txfQuantity.setCaretColor(new java.awt.Color(255, 255, 255));
+        txfQuantity.setPreferredSize(new java.awt.Dimension(500, 75));
+        jPanel2.add(txfQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
+
+        cbxCategory.setBackground(new java.awt.Color(30, 40, 53));
+        cbxCategory.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        cbxCategory.setForeground(new java.awt.Color(255, 255, 255));
+        cbxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category", "SMALL", "MEDIUM", "LARGE", "EXTRALARGE" }));
+        cbxCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbxCategory.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        cbxCategory.setPreferredSize(new java.awt.Dimension(500, 75));
+        jPanel2.add(cbxCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
         cbxType.setBackground(new java.awt.Color(30, 40, 53));
         cbxType.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         cbxType.setForeground(new java.awt.Color(255, 255, 255));
-        cbxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category", "CRUISE", "CONTAINER" }));
+        cbxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "CRUISE", "CONTAINER" }));
         cbxType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbxType.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         cbxType.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel2.add(cbxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
+        jPanel2.add(cbxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
-        txfName5.setBackground(new java.awt.Color(30, 40, 53));
-        txfName5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txfName5.setForeground(new java.awt.Color(255, 255, 255));
-        txfName5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txfName5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Name", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        txfName5.setCaretColor(new java.awt.Color(255, 255, 255));
-        txfName5.setPreferredSize(new java.awt.Dimension(500, 75));
-        txfName5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfName5ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txfName5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+        txfIMO.setBackground(new java.awt.Color(30, 40, 53));
+        txfIMO.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txfIMO.setForeground(new java.awt.Color(255, 255, 255));
+        txfIMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txfIMO.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "IMO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        txfIMO.setCaretColor(new java.awt.Color(255, 255, 255));
+        txfIMO.setPreferredSize(new java.awt.Dimension(500, 75));
+        jPanel2.add(txfIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
-        cbxType1.setBackground(new java.awt.Color(30, 40, 53));
-        cbxType1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        cbxType1.setForeground(new java.awt.Color(255, 255, 255));
-        cbxType1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "CRUISE", "CONTAINER" }));
-        cbxType1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cbxType1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        cbxType1.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel2.add(cbxType1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
+        lblErrorIMO.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorIMO.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblErrorIMO.setToolTipText("");
+        jPanel2.add(lblErrorIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 440, 20));
 
-        txfName6.setBackground(new java.awt.Color(30, 40, 53));
-        txfName6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txfName6.setForeground(new java.awt.Color(255, 255, 255));
-        txfName6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txfName6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "IMO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        txfName6.setCaretColor(new java.awt.Color(255, 255, 255));
-        txfName6.setPreferredSize(new java.awt.Dimension(500, 75));
-        txfName6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfName6ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txfName6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        lblErrorType.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel2.add(lblErrorType, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 440, 20));
 
-        jLabel2.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel2.setText("jLabel1");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 100, 20));
+        lblErrorQuantity.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorQuantity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel2.add(lblErrorQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, 440, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 640));
 
@@ -214,19 +244,19 @@ public class ViewPort extends javax.swing.JFrame {
         btnGoMenu.setContentAreaFilled(false);
         jPanel3.add(btnGoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 80, 40));
 
-        txfName2.setBackground(new java.awt.Color(30, 40, 53));
-        txfName2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txfName2.setForeground(new java.awt.Color(255, 255, 255));
-        txfName2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txfName2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "IMO to Search", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        txfName2.setCaretColor(new java.awt.Color(255, 255, 255));
-        txfName2.setPreferredSize(new java.awt.Dimension(500, 100));
-        txfName2.addActionListener(new java.awt.event.ActionListener() {
+        txfSearch.setBackground(new java.awt.Color(30, 40, 53));
+        txfSearch.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txfSearch.setForeground(new java.awt.Color(255, 255, 255));
+        txfSearch.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txfSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "IMO to Search", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        txfSearch.setCaretColor(new java.awt.Color(255, 255, 255));
+        txfSearch.setPreferredSize(new java.awt.Dimension(500, 100));
+        txfSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfName2ActionPerformed(evt);
+                txfSearchActionPerformed(evt);
             }
         });
-        jPanel3.add(txfName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 440, 90));
+        jPanel3.add(txfSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 440, 90));
 
         jButton2.setBackground(new java.awt.Color(0, 193, 212));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -250,51 +280,34 @@ public class ViewPort extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormActionPerformed
-    }//GEN-LAST:event_btnFormActionPerformed
-
-    private void txfName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfName2ActionPerformed
+    private void txfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txfName2ActionPerformed
-
-    private void txfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfNameActionPerformed
-
-    private void txfName4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfName4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfName4ActionPerformed
-
-    private void txfName5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfName5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfName5ActionPerformed
-
-    private void txfName6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfName6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfName6ActionPerformed
+    }//GEN-LAST:event_txfSearchActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnForm;
     private javax.swing.JButton btnGoMenu;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cbxCategory;
     private javax.swing.JComboBox<String> cbxType;
-    private javax.swing.JComboBox<String> cbxType1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblErrorCategory;
+    private javax.swing.JLabel lblErrorIMO;
+    private javax.swing.JLabel lblErrorName;
+    private javax.swing.JLabel lblErrorQuantity;
+    private javax.swing.JLabel lblErrorType;
     private javax.swing.JLabel lblFormTitle;
+    private javax.swing.JTextField txfIMO;
     private javax.swing.JTextField txfName;
-    private javax.swing.JTextField txfName2;
-    private javax.swing.JTextField txfName4;
-    private javax.swing.JTextField txfName5;
-    private javax.swing.JTextField txfName6;
+    private javax.swing.JTextField txfQuantity;
+    private javax.swing.JTextField txfSearch;
     // End of variables declaration//GEN-END:variables
 }
