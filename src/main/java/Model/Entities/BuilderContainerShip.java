@@ -36,10 +36,6 @@ public class BuilderContainerShip implements Builder{
         this.draft = draft;
     }
 
-    @Override
-    public void setType(String type) {
-        this.type = type;
-    }
     
     @Override
     public void setCapacity(int capacity) {
@@ -52,7 +48,7 @@ public class BuilderContainerShip implements Builder{
     }
 
     public ContainerShip getResult(){
-        return new ContainerShip(capacityTEU, container, name, imo, length, bean, draft, type);
+        return new ContainerShip(capacityTEU, container, name, imo, length, bean, draft);
     }
    
 }

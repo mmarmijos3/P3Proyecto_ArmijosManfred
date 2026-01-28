@@ -13,15 +13,12 @@ public class ContainerShip extends Vessel{
     private int capacityTEU;
     private int container;
 
-    public ContainerShip(int capacityTEU, int container, String name, String imo, double length, double bean, double draft, String type) {
-        super(name, imo, length, bean, draft, type);
+    public ContainerShip(int capacityTEU, int container, String name, String imo, double length, double bean, double draft) {
+        super(name, imo, length, bean, draft);
         this.capacityTEU = capacityTEU;
         this.container = container;
     }
-
-
     
-
     public int getCapacityTEU() {
         return capacityTEU;
     }
@@ -50,6 +47,11 @@ public class ContainerShip extends Vessel{
     @Override
     public void disembarkation() {
         setContainer(0);
+    }
+
+    @Override
+    public String getType() {
+        return "CONTAINER";
     }
 
 }

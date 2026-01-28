@@ -11,15 +11,13 @@ public abstract class Vessel implements IDockable{
     private double length;  // Vessel length in meters (Length Overall - LOA)
     private double bean;
     private double draft;
-    private String type;    // Vessel type ("CONTAINER" or "CRUISE")
 
-    public Vessel(String name, String imo, double length, double bean, double draft, String type) {
+    public Vessel(String name, String imo, double length, double bean, double draft) {
         this.name = name;
         this.imo = imo;
         this.length = length;
         this.bean = bean;
         this.draft = draft;
-        this.type = type;
     }
 
     public String getName() {
@@ -62,15 +60,8 @@ public abstract class Vessel implements IDockable{
         this.draft = draft;
     }
 
-    public String getType() {
-        return type;
-    }
+    public abstract String getType();
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    
     
     @Override
     public abstract void boarding();

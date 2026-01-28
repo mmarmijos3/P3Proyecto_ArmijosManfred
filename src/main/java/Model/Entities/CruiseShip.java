@@ -9,8 +9,8 @@ public class CruiseShip extends Vessel{
     private int passengerCapacity;
     private int passengers;
 
-    public CruiseShip(int passengerCapacity, int passengers, String name, String imo, double length, double bean, double draft, String type) {
-        super(name, imo, length, bean, draft, type);
+    public CruiseShip(int passengerCapacity, int passengers, String name, String imo, double length, double bean, double draft) {
+        super(name, imo, length, bean, draft);
         this.passengerCapacity = passengerCapacity;
         this.passengers = passengers;
     }
@@ -40,6 +40,11 @@ public class CruiseShip extends Vessel{
     @Override
     public void disembarkation() {
         setPassengers(0);
+    }
+
+    @Override
+    public String getType() {
+        return "CRUISE";
     }
 
 }

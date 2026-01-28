@@ -35,11 +35,6 @@ public class BuilderCruiseShip implements Builder{
     public void setDraft(double draft) {
         this.draft = draft;
     }
-
-    @Override
-    public void setType(String type) {
-        this.type = type;
-    }
     
     @Override
     public void setCapacity(int capacity) {
@@ -52,7 +47,7 @@ public class BuilderCruiseShip implements Builder{
     }
 
     public CruiseShip getResult(){
-        return new CruiseShip(passengerCapacity, passengers, name, imo, length, bean, draft, type);
+        return new CruiseShip(passengerCapacity, passengers, name, imo, length, bean, draft);
     }
    
 }
