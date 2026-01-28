@@ -11,13 +11,11 @@ public class CRUDVessel {
 
     private final MongoConnection mongo = MongoConnection.getInstance();
 
-    public boolean create(Document document) {
+    public void create(Document document) {
         try {
             mongo.getCollection().insertOne(document);
-            return true;
         } catch (MongoException e) {
-            System.err.println("Error al insertar: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error CREATE", e);
         }
     }
 
@@ -26,31 +24,27 @@ public class CRUDVessel {
         try {
             mongo.getCollection().find().forEach(list::add);
         } catch (MongoException e) {
-            System.err.println("Error al leer: " + e.getMessage());
+            throw new RuntimeException("Error READ", e);
         }
         return list;
     }
 
-    public boolean deleteByImo(String imo) {
+    public void deleteByImo(String imo) {
         try {
             mongo.getCollection().deleteOne(Filters.eq("imo", imo));
-            return true;
         } catch (MongoException e) {
-            System.err.println("Error al eliminar: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error DELETE ONE", e);
         }
     }
 
-    public boolean updateByImo(String imo, Document updates) {
+    public void updateByImo(String imo, Document updates) {
         try {
             mongo.getCollection().updateOne(
                 Filters.eq("imo", imo),
                 new Document("$set", updates)
             );
-            return true;
         } catch (MongoException e) {
-            System.err.println("Error al actualizar: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error UPDATE", e);
         }
     }
 
@@ -58,18 +52,15 @@ public class CRUDVessel {
         try {
             return mongo.getCollection().find(Filters.eq("imo", imo)).first();
         } catch (MongoException e) {
-            System.err.println("Error al buscar: " + e.getMessage());
-            return null;
+            throw new RuntimeException("Error SEARCH", e);
         }
     }
 
-    public boolean clearQueue() {
+    public void deleteDatabase() {
         try {
-            mongo.getCollection().deleteMany(new Document());
-            return true;
+            mongo.getCollection().drop();
         } catch (MongoException e) {
-            System.err.println("Error al limpiar cola: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error DROP", e);
         }
     }
 }

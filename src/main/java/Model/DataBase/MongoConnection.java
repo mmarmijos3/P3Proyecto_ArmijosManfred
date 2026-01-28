@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.util.ArrayList;
 import org.bson.Document;
 
 public class MongoConnection {
@@ -12,19 +13,25 @@ public class MongoConnection {
     private static MongoConnection instance;
     private MongoClient mongoClient;
     private MongoDatabase database;
-    private MongoCollection<Document> collection;
 
     private final String DATABASE_NAME = "P2Proyecto_ArmijosManfred";
     private final String COLLECTION_NAME = "VesselQueue";
+    private final String CLIENT_URL = "mongodb://localhost:27017";
 
     private MongoConnection() {
         try {
-            mongoClient = MongoClients.create("mongodb://localhost:27017");
+            mongoClient = MongoClients.create(CLIENT_URL);
             database = mongoClient.getDatabase(DATABASE_NAME);
-            collection = database.getCollection(COLLECTION_NAME);
-            System.out.println("Conexión a MongoDB OK");
+            
+            if (!database.listCollectionNames()
+                    .into(new ArrayList<>())
+                    .contains(COLLECTION_NAME)) {
+
+                database.createCollection(COLLECTION_NAME);
+            }
+            
         } catch (MongoException e) {
-            System.out.println("Fallo al conectar a MongoDB: " + e.getMessage());
+            throw new RuntimeException("Error connecting to MongoDB", e);
         }
     }
 
@@ -36,13 +43,12 @@ public class MongoConnection {
     }
 
     public MongoCollection<Document> getCollection() {
-        return collection;
+        return database.getCollection(COLLECTION_NAME);
     }
 
-    public void close() {
+    public void closeDatabase() {
         if (mongoClient != null) {
             mongoClient.close();
-            System.out.println("Conexion cerrada");
         }
     }
 }

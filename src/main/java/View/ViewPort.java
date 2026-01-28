@@ -1,6 +1,8 @@
 package View;
 
+import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,8 +24,18 @@ public class ViewPort extends javax.swing.JFrame {
     public JButton getBtnSave() {
         return btnSave;
     }
-
     
+    
+    public void loadDataToTable(ArrayList<Object[]> data) {
+        
+        DefaultTableModel tableModel = (DefaultTableModel) tblVesselQueue.getModel();
+        
+        tableModel.setRowCount(0);
+        
+        for(Object[] row : data) {
+            tableModel.addRow(row);
+        }
+    }
     
     /*
     SHOW ERRORS
@@ -124,7 +136,7 @@ public class ViewPort extends javax.swing.JFrame {
         sldOccupancy = new javax.swing.JSlider();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblVesselQueue = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -235,19 +247,27 @@ public class ViewPort extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(610, 610));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setBackground(new java.awt.Color(30, 40, 53));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblVesselQueue.setBackground(new java.awt.Color(30, 40, 53));
+        tblVesselQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "IMO", "Name", "Type", "Category", "Occupancy"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblVesselQueue);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 590, 290));
 
@@ -332,7 +352,6 @@ public class ViewPort extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblErrorCategory;
     private javax.swing.JLabel lblErrorIMO;
     private javax.swing.JLabel lblErrorName;
@@ -340,6 +359,7 @@ public class ViewPort extends javax.swing.JFrame {
     private javax.swing.JLabel lblErrorType;
     private javax.swing.JLabel lblFormTitle;
     private javax.swing.JSlider sldOccupancy;
+    private javax.swing.JTable tblVesselQueue;
     private javax.swing.JTextField txfIMO;
     private javax.swing.JTextField txfName;
     private javax.swing.JTextField txfSearch;
