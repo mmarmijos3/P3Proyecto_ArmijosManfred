@@ -24,6 +24,7 @@ public class ControllerPort {
     
     private void prepareButtons(){
         viewPort.getBtnGoMenu().addActionListener(e -> goToMenu());
+        viewPort.getBtnSave().addActionListener(e -> saveVessel());
     }
 
     private void goToMenu() {
@@ -31,41 +32,78 @@ public class ControllerPort {
         MainController.showMenu();
     }
     
+    private void saveVessel(){
+        isFormValid();
+    }
+    
     private boolean isFormValid(){
         return (
-                validateFormName() && 
-                validateFormIMO() &&
-                validateFormType() &&
-                validateFormCategory() &&
+                validateFormName() & 
+                validateFormIMO() &
+                validateFormType() &
+                validateFormCategory() &
                 validateFormQuantity()
                 );
     }
 
     private boolean validateFormName() {
-        boolean success = true;
-        if(viewPort.getNameForm().isEmpty()){
-            viewPort.showlErrorName("empty");
-            success = false;
+        
+        String error = Validation.validateNameForm(viewPort.getNameForm());
+        
+        if(error != null){
+            viewPort.showlErrorName(error);
+            return false;
         }
         
-        
-        return success;
+        viewPort.cleanlErrorName();
+        return true;
     }
+    
     private boolean validateFormIMO() {
-        boolean success = true;
-        return success;
+        String error = Validation.validateImoForm(viewPort.getIMOForm());
+        
+        if(error != null){
+            viewPort.showlErrorIMO(error);
+            return false;
+        }
+        
+        viewPort.cleanlErrorIMO();
+        return true;
     }
     private boolean validateFormType() {
-        boolean success = true;
-        return success;
+        if (viewPort.getTypeForm().equals("Select Type")){
+            viewPort.showErrorType("Select one type");
+            return false;
+        }
+        viewPort.cleanErrorType();
+        return true;
     }
+    
+    
     private boolean validateFormCategory() {
-        boolean success = true;
-        return success;
+        if (viewPort.getCategoryForm().equals("Select Category")){
+            viewPort.showErrorCategory("Select one Category");
+            return false;
+        }
+        viewPort.cleanErrorCategory();
+        return true;
     }
     private boolean validateFormQuantity() {
-        boolean success = true;
-        return success;
+        boolean succes = true;
+        if (!validateFormType()){
+            viewPort.showErrorQuantity("Need type");
+            succes = false;
+        }
+        if (!validateFormCategory()){
+            viewPort.showErrorQuantity("Need category");
+            succes = false;
+        }
+        if (!validateFormType() & !validateFormCategory()){
+            viewPort.showErrorQuantity("Need type and category");
+            succes = false;
+        }
+        if (succes) viewPort.cleanErrorQuantity();
+        return succes;
     }
     
     
