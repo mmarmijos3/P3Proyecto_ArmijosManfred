@@ -1,7 +1,6 @@
 package View;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 /**
  *
@@ -37,9 +36,13 @@ public class ViewPort extends javax.swing.JFrame {
     public void showlErrorName(String error) {
         lblErrorName.setText(error);
     }
+    
+    public void showlErrorIMO(String error) {
+        lblErrorIMO.setText(error);
+    }
 
     public void showErrorQuantity(String error) {
-        lblErrorQuantity.setText(error);
+        lblErrorOccupancy.setText(error);
     }
 
     public void showErrorType(String error) {
@@ -49,7 +52,7 @@ public class ViewPort extends javax.swing.JFrame {
     /*
     CLEAN ERRORS
     */
-    
+       
     public void cleanErrorCategory() {
         lblErrorCategory.setText("");
     }
@@ -57,9 +60,13 @@ public class ViewPort extends javax.swing.JFrame {
     public void cleanlErrorName() {
         lblErrorName.setText("");
     }
+    
+    public void cleanlErrorIMO() {
+        lblErrorIMO.setText("");
+    }
 
     public void cleanErrorQuantity() {
-        lblErrorQuantity.setText("");
+        lblErrorOccupancy.setText("");
     }
 
     public void cleanErrorType() {
@@ -68,19 +75,19 @@ public class ViewPort extends javax.swing.JFrame {
     
 
     public String getIMOForm() {
-        return txfIMO.getSelectedText();
+        return txfIMO.getText();
     }
 
     public String getNameForm() {
-        return txfName.getSelectedText();
+        return txfName.getText();
     }
 
     public String getSearchForm() {
-        return txfSearch.getSelectedText();
+        return txfSearch.getText();
     }
 
-    public String getQuantityForm() {
-        return txfQuantity.getSelectedText();
+    public int getOccupancyForm() {
+        return sldOccupancy.getValue();
     }
     
     public String getTypeForm() {
@@ -113,8 +120,8 @@ public class ViewPort extends javax.swing.JFrame {
         txfIMO = new javax.swing.JTextField();
         lblErrorIMO = new javax.swing.JLabel();
         lblErrorType = new javax.swing.JLabel();
-        lblErrorQuantity = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        lblErrorOccupancy = new javax.swing.JLabel();
+        sldOccupancy = new javax.swing.JSlider();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -125,7 +132,6 @@ public class ViewPort extends javax.swing.JFrame {
         btnGoMenu = new javax.swing.JButton();
         txfSearch = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        txfQuantity = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -175,8 +181,9 @@ public class ViewPort extends javax.swing.JFrame {
         cbxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category", "SMALL", "MEDIUM", "LARGE", "EXTRALARGE" }));
         cbxCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbxCategory.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        cbxCategory.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel2.add(cbxCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
+        cbxCategory.setFocusable(false);
+        cbxCategory.setPreferredSize(new java.awt.Dimension(500, 55));
+        jPanel2.add(cbxCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
 
         cbxType.setBackground(new java.awt.Color(30, 40, 53));
         cbxType.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -184,8 +191,9 @@ public class ViewPort extends javax.swing.JFrame {
         cbxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "CRUISE", "CONTAINER" }));
         cbxType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbxType.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        cbxType.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel2.add(cbxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        cbxType.setFocusable(false);
+        cbxType.setPreferredSize(new java.awt.Dimension(500, 55));
+        jPanel2.add(cbxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         txfIMO.setBackground(new java.awt.Color(30, 40, 53));
         txfIMO.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -194,30 +202,32 @@ public class ViewPort extends javax.swing.JFrame {
         txfIMO.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "IMO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
         txfIMO.setCaretColor(new java.awt.Color(255, 255, 255));
         txfIMO.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel2.add(txfIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        jPanel2.add(txfIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         lblErrorIMO.setForeground(new java.awt.Color(255, 0, 51));
         lblErrorIMO.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblErrorIMO.setToolTipText("");
-        jPanel2.add(lblErrorIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 440, 20));
+        jPanel2.add(lblErrorIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 440, 20));
 
         lblErrorType.setForeground(new java.awt.Color(255, 0, 51));
         lblErrorType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPanel2.add(lblErrorType, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 440, 20));
 
-        lblErrorQuantity.setForeground(new java.awt.Color(255, 0, 51));
-        lblErrorQuantity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel2.add(lblErrorQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 440, 20));
+        lblErrorOccupancy.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorOccupancy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel2.add(lblErrorOccupancy, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 440, 20));
 
-        jSlider1.setBackground(new java.awt.Color(30, 40, 53));
-        jSlider1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jSlider1.setForeground(new java.awt.Color(255, 255, 255));
-        jSlider1.setMajorTickSpacing(20);
-        jSlider1.setMinorTickSpacing(5);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setToolTipText("");
-        jSlider1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Quantity %", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel2.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 500, 80));
+        sldOccupancy.setBackground(new java.awt.Color(30, 40, 53));
+        sldOccupancy.setForeground(new java.awt.Color(255, 255, 255));
+        sldOccupancy.setMajorTickSpacing(10);
+        sldOccupancy.setMinorTickSpacing(5);
+        sldOccupancy.setPaintLabels(true);
+        sldOccupancy.setPaintTicks(true);
+        sldOccupancy.setSnapToTicks(true);
+        sldOccupancy.setToolTipText("");
+        sldOccupancy.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Occupancy  %", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        sldOccupancy.setFocusable(false);
+        jPanel2.add(sldOccupancy, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 500, 80));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 640));
 
@@ -287,15 +297,6 @@ public class ViewPort extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDrop.png"))); // NOI18N
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 100, 70));
 
-        txfQuantity.setBackground(new java.awt.Color(30, 40, 53));
-        txfQuantity.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txfQuantity.setForeground(new java.awt.Color(255, 255, 255));
-        txfQuantity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txfQuantity.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Quantity", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        txfQuantity.setCaretColor(new java.awt.Color(255, 255, 255));
-        txfQuantity.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel3.add(txfQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
-
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -331,17 +332,16 @@ public class ViewPort extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblErrorCategory;
     private javax.swing.JLabel lblErrorIMO;
     private javax.swing.JLabel lblErrorName;
-    private javax.swing.JLabel lblErrorQuantity;
+    private javax.swing.JLabel lblErrorOccupancy;
     private javax.swing.JLabel lblErrorType;
     private javax.swing.JLabel lblFormTitle;
+    private javax.swing.JSlider sldOccupancy;
     private javax.swing.JTextField txfIMO;
     private javax.swing.JTextField txfName;
-    private javax.swing.JTextField txfQuantity;
     private javax.swing.JTextField txfSearch;
     // End of variables declaration//GEN-END:variables
 }

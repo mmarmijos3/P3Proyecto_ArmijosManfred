@@ -1,13 +1,6 @@
 package Model.Entities;
 
 public class Director {
-    public void contructCruiseShip(Builder builder){
-        builder.setName(null);
-        builder.setImo(null);
-        builder.setLength(0);
-        builder.setCapacity(0);
-        builder.setQuantity(0);
-    }
     
     public void contructCruiseShipBoutique(Builder builder){
         builder.setName(null);
@@ -39,17 +32,7 @@ public class Director {
         builder.setQuantity(0);
     }
     
-    
-    
-    
-    public void contructContainerShip(Builder builder){
-        builder.setName(null);
-        builder.setImo(null);
-        builder.setLength(0);
-        builder.setCapacity(0);
-        builder.setQuantity(0);
-    }
-    
+   
     public void contructContainerShipFeeder(Builder builder){
         builder.setName(null);
         builder.setImo(null);

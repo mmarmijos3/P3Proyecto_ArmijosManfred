@@ -61,8 +61,8 @@ public class Port {
     public Port(ViewPort22 viewPort) {
         this.viewPort = viewPort;
         Director director = new Director();
-        BuilderContainerShip builderContainerShip = new BuilderContainerShip();
-        BuilderCruiseShip builderCruiseShip = new BuilderCruiseShip();
+        Builder builderContainerShip = new BuilderContainerShip();
+        Builder builderCruiseShip = new BuilderCruiseShip();
         director.contructContainerShip(builderContainerShip);
         ContainerShip container = builderContainerShip.getResult();
         this.containerShip = container;

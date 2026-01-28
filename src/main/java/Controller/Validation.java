@@ -50,7 +50,7 @@ public class Validation {
     }
 
     // Validates IMO number (7 digits with checksum)
-    public static boolean validateIMO(String imo) {
+    private static boolean validateIMO(String imo) {
         boolean success = false;
         if (imo.matches("\\d{7}")) {
             int sum = 0;
@@ -107,45 +107,32 @@ public class Validation {
 
     //FORM VALIDATION
 
-    private static boolean validateNameForm(ViewPort22 view) {
-        boolean success = true;
-        String name = view.getTxfName().getText();
+    public static String validateNameForm(String name) {
 
         if (name.isEmpty()) {
-            view.getLblErrorFormName().setText("Name is required");
-            success = false;
+            return "Name is required";
         } else if (!validateText(name)) {
-            view.getLblErrorFormName().setText("Invalid name, letters only");
-            success = false;
-        } else {
-            view.getLblErrorFormName().setText("");
+            return "Invalid name, letters only";
         }
-        return success;
+        return null;
     }
 
-    private static boolean validateImoForm(ViewPort22 view) {
-        boolean success = true;
-        String imo = view.getTxfImo().getText();
+    public static String validateImoForm(String imo) {
 
         if (imo.isEmpty()) {
-            view.getLblErrorFormIMO().setText("IMO number is required");
-            success = false;
+            return "IMO number is required";
         } else if (!validateIMO(imo)) {
-            view.getLblErrorFormIMO().setText("Invalid IMO number");
-            success = false;
-        }else if(isIMOinQueue(view)){
-            view.getLblErrorFormIMO().setText("IMO is in Queue");
-            success = false;
-        }else {
-            view.getLblErrorFormIMO().setText("");
+            return "Invalid IMO number";
+        }else if(isIMOinQueue(imo)){
+            return "IMO is in Queue";
         }
-        return success;
+        
+        return null;
     }
     
-    private static boolean isIMOinQueue(ViewPort22 view){
+    private static boolean isIMOinQueue(String imo){
         boolean success;
-        String imo = view.getTxfImo().getText();
-        success = !(MongoConnection2.getInstance().searchDocument(imo) == null);
+          success = !(MongoConnection2.getInstance().searchDocument(imo) == null);
         return success && !isEdition();
     }
 
@@ -238,8 +225,8 @@ public class Validation {
     public static boolean isValidForm(ViewPort22 view, boolean edit) {
         setEdition(edit);
         boolean success = true;
-        success &= validateNameForm(view);
-        success &= validateImoForm(view);
+        success &= validateNameForm("d").equals("d");
+        success &= validateImoForm("d").equals("d");
         success &= validateLengthForm(view);
         success &= validateTypeForm(view);
         return success;
