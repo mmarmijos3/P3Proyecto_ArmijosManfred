@@ -9,14 +9,14 @@ public abstract class Vessel implements IDockable{
     private String name;    // Vessel name (e.g., "Man Arm", "Queen Val 2")
     private String imo;     // International Maritime Organization number (unique 7-digit identifier)
     private double length;  // Vessel length in meters (Length Overall - LOA)
-    private double bean;
+    private double beam;
     private double draft;
 
-    public Vessel(String name, String imo, double length, double bean, double draft) {
+    public Vessel(String name, String imo, double length, double beam, double draft) {
         this.name = name;
         this.imo = imo;
         this.length = length;
-        this.bean = bean;
+        this.beam = beam;
         this.draft = draft;
     }
 
@@ -44,12 +44,12 @@ public abstract class Vessel implements IDockable{
         this.length = length;
     }
 
-    public double getBean() {
-        return bean;
+    public double getBeam() {
+        return beam;
     }
 
-    public void setBean(double bean) {
-        this.bean = bean;
+    public void setBeam(double beam) {
+        this.beam = beam;
     }
 
     public double getDraft() {

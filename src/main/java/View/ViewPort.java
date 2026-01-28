@@ -163,12 +163,12 @@ public class ViewPort extends javax.swing.JFrame {
         lblFormTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblFormTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblFormTitle.setText("VESSEL FORM");
-        jPanel2.add(lblFormTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
+        jPanel2.add(lblFormTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
         btnSave.setBackground(new java.awt.Color(0, 193, 212));
         btnSave.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnSave.setText("SAVE");
-        jPanel2.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, 200, 50));
+        jPanel2.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 580, 200, 50));
 
         txfName.setBackground(new java.awt.Color(30, 40, 53));
         txfName.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -177,15 +177,15 @@ public class ViewPort extends javax.swing.JFrame {
         txfName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Name", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
         txfName.setCaretColor(new java.awt.Color(255, 255, 255));
         txfName.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel2.add(txfName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+        jPanel2.add(txfName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 410, -1));
 
         lblErrorName.setForeground(new java.awt.Color(255, 0, 51));
         lblErrorName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel2.add(lblErrorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 440, 20));
+        jPanel2.add(lblErrorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 330, 20));
 
         lblErrorCategory.setForeground(new java.awt.Color(255, 0, 51));
         lblErrorCategory.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel2.add(lblErrorCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 440, 20));
+        jPanel2.add(lblErrorCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 330, 20));
 
         cbxCategory.setBackground(new java.awt.Color(30, 40, 53));
         cbxCategory.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -195,7 +195,7 @@ public class ViewPort extends javax.swing.JFrame {
         cbxCategory.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         cbxCategory.setFocusable(false);
         cbxCategory.setPreferredSize(new java.awt.Dimension(500, 55));
-        jPanel2.add(cbxCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
+        jPanel2.add(cbxCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 410, -1));
 
         cbxType.setBackground(new java.awt.Color(30, 40, 53));
         cbxType.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -205,7 +205,7 @@ public class ViewPort extends javax.swing.JFrame {
         cbxType.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         cbxType.setFocusable(false);
         cbxType.setPreferredSize(new java.awt.Dimension(500, 55));
-        jPanel2.add(cbxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+        jPanel2.add(cbxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 410, -1));
 
         txfIMO.setBackground(new java.awt.Color(30, 40, 53));
         txfIMO.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -214,20 +214,20 @@ public class ViewPort extends javax.swing.JFrame {
         txfIMO.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "IMO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
         txfIMO.setCaretColor(new java.awt.Color(255, 255, 255));
         txfIMO.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel2.add(txfIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanel2.add(txfIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 410, -1));
 
         lblErrorIMO.setForeground(new java.awt.Color(255, 0, 51));
         lblErrorIMO.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblErrorIMO.setToolTipText("");
-        jPanel2.add(lblErrorIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 440, 20));
+        jPanel2.add(lblErrorIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 330, 20));
 
         lblErrorType.setForeground(new java.awt.Color(255, 0, 51));
         lblErrorType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel2.add(lblErrorType, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 440, 20));
+        jPanel2.add(lblErrorType, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 330, 20));
 
         lblErrorOccupancy.setForeground(new java.awt.Color(255, 0, 51));
         lblErrorOccupancy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel2.add(lblErrorOccupancy, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 440, 20));
+        jPanel2.add(lblErrorOccupancy, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, 330, 20));
 
         sldOccupancy.setBackground(new java.awt.Color(30, 40, 53));
         sldOccupancy.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,9 +239,9 @@ public class ViewPort extends javax.swing.JFrame {
         sldOccupancy.setToolTipText("");
         sldOccupancy.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Occupancy  %", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
         sldOccupancy.setFocusable(false);
-        jPanel2.add(sldOccupancy, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 500, 80));
+        jPanel2.add(sldOccupancy, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 410, 80));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 640));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 450, 640));
 
         jPanel3.setBackground(new java.awt.Color(30, 40, 53));
         jPanel3.setPreferredSize(new java.awt.Dimension(610, 610));
@@ -269,7 +269,7 @@ public class ViewPort extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblVesselQueue);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 590, 290));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 720, 290));
 
         jButton1.setBackground(new java.awt.Color(0, 193, 212));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -284,12 +284,12 @@ public class ViewPort extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(0, 193, 212));
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDelete.png"))); // NOI18N
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 100, 70));
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 100, 70));
 
         jButton5.setBackground(new java.awt.Color(0, 193, 212));
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconClear.png"))); // NOI18N
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 100, 70));
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 100, 70));
 
         btnGoMenu.setBackground(new java.awt.Color(10, 107, 207));
         btnGoMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -315,9 +315,9 @@ public class ViewPort extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 193, 212));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDrop.png"))); // NOI18N
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 100, 70));
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 100, 70));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, 640));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 740, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -13,8 +13,8 @@ public class ContainerShip extends Vessel{
     private int capacityTEU;
     private int container;
 
-    public ContainerShip(int capacityTEU, int container, String name, String imo, double length, double bean, double draft) {
-        super(name, imo, length, bean, draft);
+    public ContainerShip(int capacityTEU, int container, String name, String imo, double length, double beam, double draft) {
+        super(name, imo, length, beam, draft);
         this.capacityTEU = capacityTEU;
         this.container = container;
     }
