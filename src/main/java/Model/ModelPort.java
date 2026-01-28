@@ -1,5 +1,8 @@
 package Model;
 
+import Model.Builder.BuilderContainerShip;
+import Model.Builder.Director;
+import Model.Builder.BuilderCruiseShip;
 import Model.Entities.*;
 
 public class ModelPort {

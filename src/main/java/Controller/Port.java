@@ -10,12 +10,12 @@ import View.ViewLogin;
 import View.ViewPort22;
 import Model.Entities.CruiseShip;
 import Model.DataBase.MongoConnection2;
-import Model.Entities.Builder;
-import Model.Entities.BuilderContainerShip;
-import Model.Entities.BuilderCruiseShip;
+import Model.Builder.Builder;
+import Model.Builder.BuilderContainerShip;
+import Model.Builder.BuilderCruiseShip;
 import Model.IBillable;
 import Model.Entities.ContainerShip;
-import Model.Entities.Director;
+import Model.Builder.Director;
 import java.io.File;                        // Represents file system files for bill storage
 import java.io.FileReader;                  // Reads text files (bills.json) character by character
 import java.io.FileWriter;                  // Writes text to files (saving bills to JSON)
@@ -61,12 +61,12 @@ public class Port {
     public Port(ViewPort22 viewPort) {
         this.viewPort = viewPort;
         Director director = new Director();
-        Builder builderContainerShip = new BuilderContainerShip();
-        Builder builderCruiseShip = new BuilderCruiseShip();
-        director.contructContainerShip(builderContainerShip);
+        BuilderContainerShip builderContainerShip = new BuilderContainerShip();
+        BuilderCruiseShip builderCruiseShip = new BuilderCruiseShip();
+        director.contructContainerShipFeeder(builderContainerShip);
         ContainerShip container = builderContainerShip.getResult();
         this.containerShip = container;
-        director.contructCruiseShip(builderCruiseShip);
+        director.contructCruiseShipStandard(builderCruiseShip);
         CruiseShip cruise = builderCruiseShip.getResult();
         this.cruiseShip = cruise;
         this.modelTable = (DefaultTableModel) viewPort.getTblStart().getModel();

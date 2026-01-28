@@ -1,15 +1,17 @@
-package Model.Entities;
+package Model.Builder;
 
-public class BuilderContainerShip implements Builder{
+import Model.Entities.CruiseShip;
+
+public class BuilderCruiseShip implements Builder{
     
     private String name;
     private String imo;     
     private double length;  
-    private double bean;
+    private double beam;
     private double draft;
     private String type;    
-    private int capacityTEU;
-    private int container;
+    private int passengerCapacity;
+    private int passengers;
 
     @Override
     public void setName(String name) {
@@ -27,28 +29,27 @@ public class BuilderContainerShip implements Builder{
     }
     
     @Override
-    public void setBean(double bean) {
-        this.bean = bean;
+    public void setBeam(double bean) {
+        this.beam = beam;
     }
     
     @Override
     public void setDraft(double draft) {
         this.draft = draft;
     }
-
     
     @Override
     public void setCapacity(int capacity) {
-        this.capacityTEU = capacity;
+        this.passengerCapacity = capacity;
     }
     
     @Override
-    public void setQuantity(int quantity) {
-        this.container = quantity;
+    public void setQuantity(int passengers) {
+        this.passengers = passengers;
     }
 
-    public ContainerShip getResult(){
-        return new ContainerShip(capacityTEU, container, name, imo, length, bean, draft);
+    public CruiseShip getResult(){
+        return new CruiseShip(passengerCapacity, passengers, name, imo, length, beam, draft);
     }
    
 }
