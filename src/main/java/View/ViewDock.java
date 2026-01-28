@@ -1,5 +1,7 @@
 package View;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Manfred Armijos
@@ -12,6 +14,12 @@ public class ViewDock extends javax.swing.JFrame {
     public ViewDock() {
         initComponents();
     }
+
+    public JButton getBtnGoMenu() {
+        return btnGoMenu;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,7 +60,7 @@ public class ViewDock extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         lblPayment = new javax.swing.JLabel();
-        btnExit = new javax.swing.JButton();
+        btnGoMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -252,11 +260,11 @@ public class ViewDock extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 610, 470));
 
-        btnExit.setBackground(new java.awt.Color(10, 107, 207));
-        btnExit.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconExit.png"))); // NOI18N
-        btnExit.setContentAreaFilled(false);
-        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 10, 60, -1));
+        btnGoMenu.setBackground(new java.awt.Color(10, 107, 207));
+        btnGoMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnGoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconExit.png"))); // NOI18N
+        btnGoMenu.setContentAreaFilled(false);
+        jPanel1.add(btnGoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 10, 60, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,7 +302,7 @@ public class ViewDock extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBilling;
     private javax.swing.JButton btnDock;
-    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnGoMenu;
     private javax.swing.JButton btnOperation;
     private javax.swing.JCheckBox chbClean;
     private javax.swing.JCheckBox chbMaintenance;

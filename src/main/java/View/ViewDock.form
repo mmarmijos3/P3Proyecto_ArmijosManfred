@@ -652,7 +652,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnExit">
+        <Component class="javax.swing.JButton" name="btnGoMenu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cf" green="6b" red="a" type="rgb"/>

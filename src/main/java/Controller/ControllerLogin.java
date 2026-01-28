@@ -23,15 +23,13 @@ public class ControllerLogin {
         viewLogin.getBtnExit().addActionListener(e -> exit());
     }
     
-    private boolean validateField(){
-        return !viewLogin.getUser().isBlank() && !viewLogin.getPassword().isBlank();
-    }
+    
+    
    
     private void login() {
-        if (validateField() && validCredentials()){
+        if (validateEmptyFields() && validCredentials()){
+            viewLogin.clear();
             goToMenu();
-        }else{
-            viewLogin.showErrorLogin();
         }
     }
     
@@ -41,10 +39,24 @@ public class ControllerLogin {
     }
     
     private boolean  validCredentials(){
-        return modelLogin.validateCredentials(
-            viewLogin.getUser(), 
-            viewLogin.getPassword()
-        );
+        String errorMessage = modelLogin.validateLogin(
+                viewLogin.getUsername(), 
+                viewLogin.getPassword());
+        
+        if (errorMessage != null){
+            viewLogin.showErrors(errorMessage);
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private boolean validateEmptyFields(){
+        if(viewLogin.getUsername().isEmpty() || viewLogin.getPassword().isEmpty()){
+            viewLogin.showErrors("Complete both fields");
+            return false;
+        }
+        return true;
     }
     
     private void exit() {

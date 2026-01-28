@@ -33,23 +33,47 @@ public class ViewPort extends javax.swing.JFrame {
     public String getCategoryForm() {
         return cbxCategory.getSelectedItem().toString();
     }
-
+    
+    /*
+    SHOW ERRORS
+    */
+    
     public void showErrorCategory() {
         lblErrorCategory.setText("please select one");
     }
 
-    public JLabel showlErrorName() {
-        return lblErrorName;
+    public void showlErrorName() {
+        lblErrorName.setText("invalid name");
     }
 
-    public JLabel showErrorQuantity() {
-        return lblErrorQuantity;
+    public void showErrorQuantity() {
+        lblErrorQuantity.setText("invalid quantity");
     }
 
-    public JLabel showErrorType() {
-        return lblErrorType;
+    public void showErrorType() {
+        lblErrorType.setText("please select one");
+    }
+    
+    /*
+    CLEAN ERRORS
+    */
+    
+    public void cleanErrorCategory() {
+        lblErrorCategory.setText("");
     }
 
+    public void cleanlErrorName() {
+        lblErrorName.setText("");
+    }
+
+    public void cleanErrorQuantity() {
+        lblErrorQuantity.setText("");
+    }
+
+    public void cleanErrorType() {
+        lblErrorType.setText("");
+    }
+    
 
     public String getIMO() {
         return txfIMO.getSelectedText();

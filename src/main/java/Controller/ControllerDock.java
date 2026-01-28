@@ -23,6 +23,11 @@ public class ControllerDock {
     }
     
     private void prepareButtons(){
-        
+        viewDock.getBtnGoMenu().addActionListener(e -> goToMenu());
+    }
+    
+    private void goToMenu() {
+        viewDock.setVisible(false);
+        MainController.showMenu();
     }
 }

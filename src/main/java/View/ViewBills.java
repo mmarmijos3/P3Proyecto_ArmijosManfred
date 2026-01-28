@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
+
+import javax.swing.JButton;
 
 /**
  *
@@ -16,6 +14,12 @@ public class ViewBills extends javax.swing.JFrame {
     public ViewBills() {
         initComponents();
     }
+
+    public JButton getBtnGoMenu() {
+        return btnGoMenu;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,7 +41,7 @@ public class ViewBills extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnGoMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -101,15 +105,11 @@ public class ViewBills extends javax.swing.JFrame {
         jButton5.setText("U");
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 100, 70));
 
-        jButton6.setBackground(new java.awt.Color(10, 107, 207));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton6.setText("Salir");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 100, 80));
+        btnGoMenu.setBackground(new java.awt.Color(10, 107, 207));
+        btnGoMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnGoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconExit.png"))); // NOI18N
+        btnGoMenu.setContentAreaFilled(false);
+        jPanel3.add(btnGoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 60, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, 640));
 
@@ -130,19 +130,13 @@ public class ViewBills extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        new ViewMenu().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGoMenu;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -16,17 +16,20 @@ public class ViewLogin extends javax.swing.JFrame {
         return String.valueOf(psfPassword.getPassword());
     }
 
-    public String getUser() {
+    public String getUsername() {
         return txfUsername.getText();
     }
     
-    public void showErrorLogin(){
-        lblErrorKey.setText("Invalid Credentials");
+    public void showErrors(String error){
+        lblErrors.setText(error);
     }
     
-    public void showOkLogin(){
-        lblErrorKey.setText("OK Credentials");
+    public void clear(){
+        lblErrors.setText("");
+        txfUsername.setText("");
+        psfPassword.setText("");
     }
+    
 
     public JButton getBtnExit() {
         return btnExit;
@@ -46,7 +49,7 @@ public class ViewLogin extends javax.swing.JFrame {
         pnlLogin = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         lblLogin = new javax.swing.JLabel();
-        lblErrorKey = new javax.swing.JLabel();
+        lblErrors = new javax.swing.JLabel();
         lblIconKey = new javax.swing.JLabel();
         lblIconUser = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
@@ -54,6 +57,8 @@ public class ViewLogin extends javax.swing.JFrame {
         txfUsername = new javax.swing.JTextField();
         psfPassword = new javax.swing.JPasswordField();
         lblTitle1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,9 +86,9 @@ public class ViewLogin extends javax.swing.JFrame {
         lblLogin.setText("LOGIN");
         pnlLogin.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
 
-        lblErrorKey.setForeground(new java.awt.Color(255, 158, 0));
-        lblErrorKey.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pnlLogin.add(lblErrorKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 430, 20));
+        lblErrors.setForeground(new java.awt.Color(255, 158, 0));
+        lblErrors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlLogin.add(lblErrors, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 430, 20));
 
         lblIconKey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconKey.png"))); // NOI18N
         pnlLogin.add(lblIconKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 540, 50, 40));
@@ -129,6 +134,18 @@ public class ViewLogin extends javax.swing.JFrame {
         lblTitle1.setText("ESPE");
         pnlLogin.add(lblTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, -10, -1, 150));
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("P: 1599");
+        pnlLogin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 180, 60));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("U: mmarmijos3");
+        pnlLogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 180, 60));
+
         pnlBGLogin.add(pnlLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 460, 720));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconBGForm.jpg"))); // NOI18N
@@ -160,7 +177,9 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblErrorKey;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblErrors;
     private javax.swing.JLabel lblIconKey;
     private javax.swing.JLabel lblIconUser;
     private javax.swing.JLabel lblLogin;

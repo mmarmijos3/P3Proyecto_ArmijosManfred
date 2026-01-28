@@ -23,6 +23,11 @@ public class ControllerBills {
     }
     
     private void prepareButtons(){
-        
+        viewBills.getBtnGoMenu().addActionListener(e -> goToMenu());
+    }
+    
+    private void goToMenu() {
+        viewBills.setVisible(false);
+        MainController.showMenu();
     }
 }

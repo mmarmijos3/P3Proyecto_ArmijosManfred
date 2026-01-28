@@ -3,16 +3,17 @@ package Model;
 
 import Model.Entities.User;
 import java.util.ArrayList;
-
+import Model.Chain.*;
 /**
  *
  * @author Manfred Armijos
  */
 public class ModelLogin {
-    private ArrayList<User> users = new ArrayList<>();
+    private final ArrayList<User> users = new ArrayList<>();
 
     public ModelLogin() {
         users.add(new User("mmarmijos3", "1599"));
+        users.add(new User("admin", "admin"));
         //...
     }
     
@@ -26,11 +27,19 @@ public class ModelLogin {
         return null;
     }
     
-    public boolean validateCredentials(String username, String password) {
-        User usuario = findUserByUsername(username);
-        if (usuario == null) {
-            return false;
-        }
-        return usuario.getPassword().equals(password);
+    public String validateLogin(String username, String password){
+        User user = findUserByUsername(username);
+        LoginHandler chain = createChain();
+        return chain.validate(user, password);
     }
+    
+    private LoginHandler createChain(){
+        LoginHandler existHandler = new UserExistHandler();
+        LoginHandler passwordHandler = new PasswordMatchHandler();
+        
+        existHandler.setNext(passwordHandler);
+        
+        return existHandler;
+    }
+    
 }
