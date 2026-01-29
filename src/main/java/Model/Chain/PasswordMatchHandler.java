@@ -2,10 +2,6 @@ package Model.Chain;
 
 import Model.Entities.User;
 
-/**
- *
- * @author Usuario
- */
 public class PasswordMatchHandler extends BaseHandler{
 
     @Override

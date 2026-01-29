@@ -13,7 +13,7 @@ import Model.DataBase.MongoConnection2;
 import Model.Builder.Builder;
 import Model.Builder.BuilderContainerShip;
 import Model.Builder.BuilderCruiseShip;
-import Model.IBillable;
+import Model.Entities.IBillable;
 import Model.Entities.ContainerShip;
 import Model.Builder.Director;
 import java.io.File;                        // Represents file system files for bill storage

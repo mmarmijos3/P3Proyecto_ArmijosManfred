@@ -2,10 +2,6 @@ package Model.Chain;
 
 import Model.Entities.User;
 
-/**
- *
- * @author Usuario
- */
 public abstract class BaseHandler implements LoginHandler{
     protected LoginHandler next;
     
