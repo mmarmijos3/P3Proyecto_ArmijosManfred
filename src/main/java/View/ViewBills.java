@@ -34,14 +34,13 @@ public class ViewBills extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jPanel4 = new javax.swing.JPanel();
+        btnGoMenu = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        btnGoMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -61,57 +60,57 @@ public class ViewBills extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 560, 540));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 560, 500));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 640));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 540));
 
-        jPanel3.setBackground(new java.awt.Color(30, 40, 53));
-        jPanel3.setPreferredSize(new java.awt.Dimension(610, 610));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setBackground(new java.awt.Color(30, 40, 53));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 590, 290));
-
-        jButton2.setBackground(new java.awt.Color(10, 107, 207));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton2.setText("D");
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 100, 70));
-
-        jButton3.setBackground(new java.awt.Color(10, 107, 207));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton3.setText("C");
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 100, 70));
-
-        jButton4.setBackground(new java.awt.Color(10, 107, 207));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton4.setText("R");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 100, 70));
-
-        jButton5.setBackground(new java.awt.Color(10, 107, 207));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton5.setText("U");
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 100, 70));
+        jPanel4.setBackground(new java.awt.Color(30, 40, 53));
+        jPanel4.setPreferredSize(new java.awt.Dimension(610, 610));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnGoMenu.setBackground(new java.awt.Color(10, 107, 207));
         btnGoMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnGoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconExit.png"))); // NOI18N
         btnGoMenu.setContentAreaFilled(false);
-        jPanel3.add(btnGoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 60, -1));
+        jPanel4.add(btnGoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 60, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, 640));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 610, 670));
+
+        jPanel3.setBackground(new java.awt.Color(30, 40, 53));
+        jPanel3.setPreferredSize(new java.awt.Dimension(610, 610));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton2.setBackground(new java.awt.Color(10, 107, 207));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton2.setText("TXT");
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 100, 70));
+
+        jButton3.setBackground(new java.awt.Color(10, 107, 207));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton3.setText("HTML");
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 100, 70));
+
+        jButton4.setBackground(new java.awt.Color(10, 107, 207));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton4.setText("PDF");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 100, 70));
+
+        jButton5.setBackground(new java.awt.Color(10, 107, 207));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton5.setText("JSON");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 100, 70));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 610, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,6 +129,14 @@ public class ViewBills extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoMenu;
@@ -140,9 +147,8 @@ public class ViewBills extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
