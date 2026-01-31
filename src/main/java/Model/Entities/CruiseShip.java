@@ -15,6 +15,10 @@ public class CruiseShip extends Vessel{
         this.passengers = passengers;
     }
 
+    public CruiseShip() {
+    }
+    
+
     public int getPassengerCapacity() {
         return passengerCapacity;
     }

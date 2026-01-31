@@ -4,53 +4,52 @@ import Model.Entities.ContainerShip;
 
 public class BuilderContainerShip implements Builder{
     
-    private String name;
-    private String imo;     
-    private double length;  
-    private double beam;
-    private double draft;
-    private String type;    
-    private int capacityTEU;
-    private int container;
+    private ContainerShip containerShip;
+    
+    @Override
+    public void reset(){
+        containerShip = new ContainerShip();
+    }
 
     @Override
     public void setName(String name) {
-        this.name = name;
+        containerShip.setName(name);
     }
 
     @Override
     public void setImo(String imo) {
-        this.imo = imo;
+        containerShip.setImo(imo);
     }
 
     @Override
     public void setLength(double length) {
-        this.length = length;
+        containerShip.setLength(length);
     }
     
     @Override
     public void setBeam(double beam) {
-        this.beam = beam;
+        containerShip.setBeam(beam);
     }
     
     @Override
     public void setDraft(double draft) {
-        this.draft = draft;
+        containerShip.setDraft(draft);
     }
 
     
     @Override
     public void setCapacity(int capacity) {
-        this.capacityTEU = capacity;
+        containerShip.setCapacityTEU(capacity);
     }
     
     @Override
     public void setQuantity(int quantity) {
-        this.container = quantity;
+        containerShip.setContainer(quantity);
     }
 
+    @Override
     public ContainerShip getResult(){
-        return new ContainerShip(capacityTEU, container, name, imo, length, beam, draft);
+        return containerShip;
     }
    
 }

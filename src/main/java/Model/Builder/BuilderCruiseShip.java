@@ -4,52 +4,51 @@ import Model.Entities.CruiseShip;
 
 public class BuilderCruiseShip implements Builder{
     
-    private String name;
-    private String imo;     
-    private double length;  
-    private double beam;
-    private double draft;
-    private String type;    
-    private int passengerCapacity;
-    private int passengers;
+    private CruiseShip cruiseShip;
+    
+    @Override
+    public void reset(){
+        cruiseShip = new CruiseShip();
+    }
 
     @Override
     public void setName(String name) {
-        this.name = name;
+        cruiseShip.setName(name);
     }
 
     @Override
     public void setImo(String imo) {
-        this.imo = imo;
+        cruiseShip.setImo(imo);
     }
 
     @Override
     public void setLength(double length) {
-        this.length = length;
+        cruiseShip.setLength(length);
     }
     
     @Override
     public void setBeam(double bean) {
-        this.beam = beam;
+        cruiseShip.setBeam(bean);
     }
     
     @Override
     public void setDraft(double draft) {
-        this.draft = draft;
+        cruiseShip.setDraft(draft);
     }
     
     @Override
     public void setCapacity(int capacity) {
-        this.passengerCapacity = capacity;
+        cruiseShip.setPassengerCapacity(capacity);
     }
     
     @Override
     public void setQuantity(int passengers) {
-        this.passengers = passengers;
+        cruiseShip.setPassengers(passengers);
     }
 
+    @Override
     public CruiseShip getResult(){
-        return new CruiseShip(passengerCapacity, passengers, name, imo, length, beam, draft);
+        return cruiseShip;
     }
    
 }

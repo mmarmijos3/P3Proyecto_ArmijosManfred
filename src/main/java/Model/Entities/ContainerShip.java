@@ -18,6 +18,12 @@ public class ContainerShip extends Vessel{
         this.capacityTEU = capacityTEU;
         this.container = container;
     }
+
+    public ContainerShip() {
+        
+    }
+    
+    
     
     public int getCapacityTEU() {
         return capacityTEU;

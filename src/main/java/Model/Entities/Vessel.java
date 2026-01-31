@@ -20,6 +20,10 @@ public abstract class Vessel implements IDockable{
         this.draft = draft;
     }
 
+    public Vessel() {
+    }
+    
+
     public String getName() {
         return name;
     }
