@@ -14,6 +14,7 @@ public class ViewMenu extends javax.swing.JFrame {
     public ViewMenu() {
         initComponents();
         setUndecorated(true);
+        setLocationRelativeTo(null);
     }
 
     public JButton getBtnGoBills() {
@@ -25,7 +26,7 @@ public class ViewMenu extends javax.swing.JFrame {
     }
 
     public JButton getBtnGoLogin() {
-        return btnGoLogin;
+        return btnBack;
     }
 
     public JButton getBtnGoPort() {
@@ -47,8 +48,8 @@ public class ViewMenu extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btnGoBills = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        btnGoLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -57,7 +58,6 @@ public class ViewMenu extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(1280, 720));
         jPanel1.setMinimumSize(new java.awt.Dimension(1280, 720));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(10, 107, 207));
         jPanel2.setPreferredSize(new java.awt.Dimension(295, 600));
@@ -72,8 +72,6 @@ public class ViewMenu extends javax.swing.JFrame {
         jLabel3.setText("PORT");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
-
         jPanel3.setBackground(new java.awt.Color(10, 107, 207));
         jPanel3.setPreferredSize(new java.awt.Dimension(295, 600));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,8 +84,6 @@ public class ViewMenu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(232, 238, 244));
         jLabel4.setText("DOCK");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(10, 107, 207));
         jPanel4.setPreferredSize(new java.awt.Dimension(295, 600));
@@ -102,18 +98,52 @@ public class ViewMenu extends javax.swing.JFrame {
         jLabel5.setText("BILLS");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 100, -1, -1));
-
-        btnGoLogin.setBackground(new java.awt.Color(10, 107, 207));
-        btnGoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconExit.png"))); // NOI18N
-        btnGoLogin.setBorderPainted(false);
-        btnGoLogin.setContentAreaFilled(false);
-        jPanel1.add(btnGoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 100, 70));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(232, 238, 244));
         jLabel1.setText("MENU PRINCIPAL");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 290, 40));
+
+        btnBack.setBackground(new java.awt.Color(10, 107, 207));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconBack.png"))); // NOI18N
+        btnBack.setBorder(null);
+        btnBack.setBorderPainted(false);
+        btnBack.setContentAreaFilled(false);
+        btnBack.setFocusPainted(false);
+        btnBack.setFocusable(false);
+        btnBack.setPreferredSize(new java.awt.Dimension(45, 45));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(500, 500, 500)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,16 +155,13 @@ public class ViewMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        setSize(new java.awt.Dimension(1296, 728));
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnGoBills;
     private javax.swing.JButton btnGoDock;
-    private javax.swing.JButton btnGoLogin;
     private javax.swing.JButton btnGoPort;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

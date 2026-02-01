@@ -9,7 +9,8 @@ public class CruiseShip extends Vessel{
     private int passengerCapacity;
     private int passengers;
 
-    public CruiseShip(int passengerCapacity, int passengers, String name, String imo, double length, double beam, double draft) {
+    public CruiseShip(int passengerCapacity, int passengers, String name, 
+            String imo, double length, double beam, double draft) {
         super(name, imo, length, beam, draft);
         this.passengerCapacity = passengerCapacity;
         this.passengers = passengers;
@@ -19,31 +20,37 @@ public class CruiseShip extends Vessel{
     }
     
 
-    public int getPassengerCapacity() {
+    @Override
+    public int getCapacity() {
         return passengerCapacity;
     }
 
-    public void setPassengerCapacity(int passengerCapacity) {
+    @Override
+    public void setCapacity(int passengerCapacity) {
         this.passengerCapacity = passengerCapacity;
     }
 
-    public int getPassengers() {
+    @Override
+    public int getQuantity() {
         return passengers;
     }
 
-    public void setPassengers(int passengers) {
+    @Override
+    public void setQuantity(int passengers) {
         this.passengers = passengers;
     }
+    
+   
 
     
     @Override
     public void boarding() {
-        setPassengers(getPassengerCapacity());
+        setQuantity(getCapacity());
     }
 
     @Override
     public void disembarkation() {
-        setPassengers(0);
+        setQuantity(0);
     }
 
     @Override

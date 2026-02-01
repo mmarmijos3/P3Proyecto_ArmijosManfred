@@ -13,7 +13,8 @@ public class ContainerShip extends Vessel{
     private int capacityTEU;
     private int container;
 
-    public ContainerShip(int capacityTEU, int container, String name, String imo, double length, double beam, double draft) {
+    public ContainerShip(int capacityTEU, int container, String name, 
+            String imo, double length, double beam, double draft) {
         super(name, imo, length, beam, draft);
         this.capacityTEU = capacityTEU;
         this.container = container;
@@ -23,36 +24,34 @@ public class ContainerShip extends Vessel{
         
     }
     
-    
-    
-    public int getCapacityTEU() {
+    @Override
+    public int getCapacity() {
         return capacityTEU;
     }
 
-    public void setCapacityTEU(int capacityTEU) {
+    @Override
+    public void setCapacity(int capacityTEU) {
         this.capacityTEU = capacityTEU;
     }
 
-    public int getContainer() {
+    @Override
+    public int getQuantity() {
         return container;
     }
 
-    public void setContainer(int container) {
+    @Override
+    public void setQuantity(int container) {
         this.container = container;
     }
     
-    /*
-    override of inherited methods
-    */
-    
     @Override
     public void boarding() {
-        setContainer(getCapacityTEU());
+        setQuantity(getCapacity());
     }
 
     @Override
     public void disembarkation() {
-        setContainer(0);
+        setQuantity(0);
     }
 
     @Override

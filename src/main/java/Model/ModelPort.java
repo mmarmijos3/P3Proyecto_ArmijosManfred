@@ -1,45 +1,54 @@
 package Model;
 
-import Model.Builder.BuilderContainerShip;
-import Model.Builder.Director;
-import Model.Builder.BuilderCruiseShip;
-import Model.Entities.*;
+import Model.Builder.VesselConstructor;
+import Model.DataBase.CRUDVessel;
+import Model.DataBase.DocumentManage;
+import Model.DataBase.OperationsCRUD;
+import Model.Entities.Vessel;
+import java.util.List;
+import org.bson.Document;
 
 public class ModelPort {
     
-    Director director = new Director();
+    private OperationsCRUD crud = new CRUDVessel();
+    private VesselConstructor constructor = new VesselConstructor();
+    private DocumentManage docManager = new DocumentManage();
     
-    public Vessel contructVessel(String type, String category){
-        switch (type) {
-            case "CRUISE" -> {return contructCruiseShip(category);}
-            case "CONTAINER" -> {return contructContainerShip(category);}
-            default -> {return null;}
-        }
+
+    private Document documentVessel(Vessel vessel){
+        return docManager.documentVessel(vessel);
     }
     
-    public void guardarvessel(String type, String category){
-        
+    private Vessel createVessel(String type, String category, String name, String imo, int occupancy){
+        return constructor.contructVessel(type, category, name, imo, occupancy);
     }
-
-    private Vessel contructCruiseShip(String category) {
-        BuilderCruiseShip builder = new BuilderCruiseShip();
-        switch (category) {
-            case "SMALL" -> director.contructCruiseShipBoutique(builder);
-            case "MEDIUM" -> director.contructCruiseShipStandard(builder);
-            case "LARGE" -> director.contructCruiseShipMega(builder);
-            case "EXTRALARGE" -> director.contructCruiseShipIcon(builder);
-        }
-        return builder.getResult();
+    
+    public void addVesselInQueue(String type, String category, String name, String imo, int occupancy) {
+        crud.create(documentVessel(createVessel(type, category, name, imo, occupancy)));
     }
-
-    private Vessel contructContainerShip(String category) {
-        BuilderContainerShip builder = new BuilderContainerShip();
-        switch (category) {
-            case "SMALL" -> director.contructContainerShipFeeder(builder);
-            case "MEDIUM" -> director.contructContainerShipPostPanamax(builder);
-            case "LARGE" -> director.contructContainerShipNeopanamax(builder);
-            case "EXTRALARGE" -> director.contructContainerShipUltraLarge(builder);
-        }
-        return builder.getResult();
+    
+    public void updateVesselInQueue(String type, String category, String name, String imo, int occupancy) {
+        crud.update(imo, documentVessel(createVessel(type, category, name, imo, occupancy)));
     }
+    
+    public List<Object[]> getAllQueue(){
+        return docManager.docListToObjList(crud.read());
+    }
+    
+    public List<Object[]> searchVesselInQueue(String imo){
+        return docManager.docListToObjList(crud.read());
+    }
+    
+    public void deleteVesselInQueue(String imo){
+        crud.delete(imo);
+    }
+    
+    public void deleteQueue(){
+        crud.deleteCollection();
+    }
+    
+    public void deleteDatabase(){
+        crud.deleteDatabase();
+    }
+    
 }

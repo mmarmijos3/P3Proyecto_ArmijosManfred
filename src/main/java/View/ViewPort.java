@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
+//<editor-fold defaultstate="collapsed" desc="DATA FORM">
+    // </editor-fold>
+
 /**
  *
  * @author Manfred Armijos
@@ -15,17 +18,167 @@ public class ViewPort extends javax.swing.JFrame {
      */
     public ViewPort() {
         initComponents();
-    }
-
-    public JButton getBtnGoMenu() {
-        return btnGoMenu;
-    }
-
-    public JButton getBtnSave() {
-        return btnSave;
+        setUndecorated(true);
+        setLocationRelativeTo(null);
     }
     
+    //<editor-fold defaultstate="collapsed" desc="BUTTONS">
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    public JButton getBtnCleanForm() {
+        return btnCleanForm;
+    }
+
+    public JButton getBtnCleanSearch() {
+        return btnCleanSearch;
+    }
+
+    public JButton getBtnCreate() {
+        return btnCreate;
+    }
+
+    public JButton getBtnDelCollection() {
+        return btnDelCollection;
+    }
+
+    public JButton getBtnDelDB() {
+        return btnDelDB;
+    }
+
+    public JButton getBtnDelete() {
+        return btnDelete;
+    }
+
+    public JButton getBtnEdit() {
+        return btnEdit;
+    }
+
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public JButton getBtnUpdate() {
+        return btnUpdate;
+    }
+    // </editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="DATA FORM">
+    
+    //<editor-fold defaultstate="collapsed" desc="NAME">
+    public String getNameForm() {
+        return txfName.getText();
+    }
+    
+    public void setNameForm(String name){
+        txfName.setText(name);
+    }
+    
+    public void cleanNameForm(){
+        setNameForm("");
+    }
+    
+    public void showlErrorName(String error) {
+        lblErrorName.setText(error);
+    }
+    
+    public void cleanlErrorName() {
+        lblErrorName.setText("");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="IMO">
+    public String getIMOForm() {
+        return txfIMO.getText();
+    }
+    
+    public void setIMOForm(String imo){
+        txfIMO.setText(imo);
+    }
+    
+    public void cleanIMOForm(){
+        setIMOForm("");
+    }
+    
+    public void showlErrorIMO(String error) {
+        lblErrorIMO.setText(error);
+    }
+    
+    public void cleanlErrorIMO() {
+        lblErrorIMO.setText("");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="TYPE">
+    public String getTypeForm(){
+        return cbxType.getSelectedItem().toString();
+    }
+    
+    public void setTypeForm(Object type){
+        cbxType.setSelectedItem(type);
+    }
+    
+    public void cleanTypeForm(){
+        setTypeForm(0);
+    }
+    
+    public void showErrorType(String error) {
+        lblErrorType.setText(error);
+    }
+    
+    public void cleanErrorType() {
+        lblErrorType.setText("");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="CATEGORY">
+    public String getCategoryForm(){
+        return cbxCategory.getSelectedItem().toString();
+    }
+    
+    public void setCategoryForm(Object category){
+        cbxCategory.setSelectedItem(category);
+    }
+    
+    public void cleanCategoryForm(){
+        setCategoryForm(0);
+    }
+    
+    public void showErrorCategory(String error) {
+        lblErrorCategory.setText(error);
+    }
+    
+    public void cleanErrorCategory() {
+        lblErrorCategory.setText("");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="OCCUPANCY">
+    public int getOccupancyForm() {
+        return sldOccupancy.getValue();
+    }
+    
+    public void setOccupancyForm(int occupancy) {
+        sldOccupancy.setValue(occupancy);
+    }
+    
+    public void cleanOccupancyForm() {
+        setOccupancyForm(0);
+    }
+    
+    public void showErrorOccupancy(String error) {
+        lblErrorOccupancy.setText(error);
+    }
+    
+    public void cleanErrorOccupancy() {
+        lblErrorOccupancy.setText("");
+    }
+    //</editor-fold>
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="DATA TABLE">
     public void loadDataToTable(ArrayList<Object[]> data) {
         
         DefaultTableModel tableModel = (DefaultTableModel) tblVesselQueue.getModel();
@@ -37,85 +190,49 @@ public class ViewPort extends javax.swing.JFrame {
         }
     }
     
-    /*
-    SHOW ERRORS
-    */
-    
-    public void showErrorCategory(String error) {
-        lblErrorCategory.setText(error);
-    }
-
-    public void showlErrorName(String error) {
-        lblErrorName.setText(error);
+    public int getSelectedVessel(){
+        return tblVesselQueue.getSelectedRow();
     }
     
-    public void showlErrorIMO(String error) {
-        lblErrorIMO.setText(error);
-    }
-
-    public void showErrorQuantity(String error) {
-        lblErrorOccupancy.setText(error);
-    }
-
-    public void showErrorType(String error) {
-        lblErrorType.setText(error);
+    public Object getInfoSelectedVessel(int col){
+        return tblVesselQueue.getValueAt(getSelectedVessel(), col);
     }
     
-    /*
-    CLEAN ERRORS
-    */
-       
-    public void cleanErrorCategory() {
-        lblErrorCategory.setText("");
-    }
-
-    public void cleanlErrorName() {
-        lblErrorName.setText("");
+    public Object getIMOToEdit(){
+        return getInfoSelectedVessel(0);
     }
     
-    public void cleanlErrorIMO() {
-        lblErrorIMO.setText("");
-    }
-
-    public void cleanErrorQuantity() {
-        lblErrorOccupancy.setText("");
-    }
-
-    public void cleanErrorType() {
-        lblErrorType.setText("");
+    public Object getNameToEdit(){
+        return getInfoSelectedVessel(1);
     }
     
-
-    public String getIMOForm() {
-        return txfIMO.getText();
+    public Object getTypeToEdit(){
+        return getInfoSelectedVessel(2);
     }
-
-    public String getNameForm() {
-        return txfName.getText();
+    
+    public Object getCategoryToEdit(){
+        return getInfoSelectedVessel(3);
     }
+    
+    public Object getOccupancyToEdit(){
+        return getInfoSelectedVessel(4);
+    }
+    
+    public void enableTable(boolean state){
+        tblVesselQueue.setEnabled(state);
+    }
+    // </editor-fold>
+   
+    
 
     public String getSearchForm() {
         return txfSearch.getText();
     }
 
-    public int getOccupancyForm() {
-        return sldOccupancy.getValue();
-    }
-    
-    public String getTypeForm() {
-        return cbxType.getSelectedItem().toString();
-    }
-    
-    public String getCategoryForm() {
-        return cbxCategory.getSelectedItem().toString();
-    }
     
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -123,7 +240,6 @@ public class ViewPort extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblFormTitle = new javax.swing.JLabel();
-        btnSave = new javax.swing.JButton();
         txfName = new javax.swing.JTextField();
         lblErrorName = new javax.swing.JLabel();
         lblErrorCategory = new javax.swing.JLabel();
@@ -134,18 +250,23 @@ public class ViewPort extends javax.swing.JFrame {
         lblErrorType = new javax.swing.JLabel();
         lblErrorOccupancy = new javax.swing.JLabel();
         sldOccupancy = new javax.swing.JSlider();
+        btnCleanForm = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVesselQueue = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        btnGoMenu = new javax.swing.JButton();
         txfSearch = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnCleanSearch = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnDelCollection = new javax.swing.JButton();
+        btnDelDB = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
 
@@ -153,7 +274,6 @@ public class ViewPort extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(1280, 720));
         jPanel1.setMinimumSize(new java.awt.Dimension(1280, 720));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(30, 40, 53));
         jPanel2.setPreferredSize(new java.awt.Dimension(610, 610));
@@ -163,12 +283,7 @@ public class ViewPort extends javax.swing.JFrame {
         lblFormTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblFormTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblFormTitle.setText("VESSEL FORM");
-        jPanel2.add(lblFormTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
-
-        btnSave.setBackground(new java.awt.Color(0, 193, 212));
-        btnSave.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnSave.setText("SAVE");
-        jPanel2.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 580, 200, 50));
+        jPanel2.add(lblFormTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         txfName.setBackground(new java.awt.Color(30, 40, 53));
         txfName.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -179,13 +294,15 @@ public class ViewPort extends javax.swing.JFrame {
         txfName.setPreferredSize(new java.awt.Dimension(500, 75));
         jPanel2.add(txfName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 410, -1));
 
-        lblErrorName.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorName.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblErrorName.setForeground(new java.awt.Color(255, 153, 51));
         lblErrorName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel2.add(lblErrorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 330, 20));
+        jPanel2.add(lblErrorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 330, 30));
 
-        lblErrorCategory.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorCategory.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblErrorCategory.setForeground(new java.awt.Color(255, 153, 51));
         lblErrorCategory.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel2.add(lblErrorCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 330, 20));
+        jPanel2.add(lblErrorCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 330, 30));
 
         cbxCategory.setBackground(new java.awt.Color(30, 40, 53));
         cbxCategory.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -195,7 +312,7 @@ public class ViewPort extends javax.swing.JFrame {
         cbxCategory.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         cbxCategory.setFocusable(false);
         cbxCategory.setPreferredSize(new java.awt.Dimension(500, 55));
-        jPanel2.add(cbxCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 410, -1));
+        jPanel2.add(cbxCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 410, -1));
 
         cbxType.setBackground(new java.awt.Color(30, 40, 53));
         cbxType.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -216,18 +333,21 @@ public class ViewPort extends javax.swing.JFrame {
         txfIMO.setPreferredSize(new java.awt.Dimension(500, 75));
         jPanel2.add(txfIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 410, -1));
 
-        lblErrorIMO.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorIMO.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblErrorIMO.setForeground(new java.awt.Color(255, 153, 51));
         lblErrorIMO.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblErrorIMO.setToolTipText("");
-        jPanel2.add(lblErrorIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 330, 20));
+        jPanel2.add(lblErrorIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 330, 30));
 
-        lblErrorType.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorType.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblErrorType.setForeground(new java.awt.Color(255, 153, 51));
         lblErrorType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel2.add(lblErrorType, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 330, 20));
+        jPanel2.add(lblErrorType, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 330, 30));
 
-        lblErrorOccupancy.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorOccupancy.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblErrorOccupancy.setForeground(new java.awt.Color(255, 153, 51));
         lblErrorOccupancy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel2.add(lblErrorOccupancy, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, 330, 20));
+        jPanel2.add(lblErrorOccupancy, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, 330, 30));
 
         sldOccupancy.setBackground(new java.awt.Color(30, 40, 53));
         sldOccupancy.setForeground(new java.awt.Color(255, 255, 255));
@@ -241,7 +361,23 @@ public class ViewPort extends javax.swing.JFrame {
         sldOccupancy.setFocusable(false);
         jPanel2.add(sldOccupancy, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 410, 80));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 450, 640));
+        btnCleanForm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconClean.png"))); // NOI18N
+        btnCleanForm.setBorder(null);
+        btnCleanForm.setBorderPainted(false);
+        btnCleanForm.setContentAreaFilled(false);
+        jPanel2.add(btnCleanForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 580, -1, -1));
+
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconReset.png"))); // NOI18N
+        btnUpdate.setBorder(null);
+        btnUpdate.setBorderPainted(false);
+        btnUpdate.setContentAreaFilled(false);
+        jPanel2.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
+
+        btnCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconCreate.png"))); // NOI18N
+        btnCreate.setBorder(null);
+        btnCreate.setBorderPainted(false);
+        btnCreate.setContentAreaFilled(false);
+        jPanel2.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 580, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(30, 40, 53));
         jPanel3.setPreferredSize(new java.awt.Dimension(610, 610));
@@ -269,34 +405,7 @@ public class ViewPort extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblVesselQueue);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 720, 290));
-
-        jButton1.setBackground(new java.awt.Color(0, 193, 212));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconSearch.png"))); // NOI18N
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 100, 70));
-
-        jButton3.setBackground(new java.awt.Color(0, 193, 212));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconUpdate.png"))); // NOI18N
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 100, 70));
-
-        jButton4.setBackground(new java.awt.Color(0, 193, 212));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDelete.png"))); // NOI18N
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 100, 70));
-
-        jButton5.setBackground(new java.awt.Color(0, 193, 212));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconClear.png"))); // NOI18N
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 100, 70));
-
-        btnGoMenu.setBackground(new java.awt.Color(10, 107, 207));
-        btnGoMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnGoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconExit.png"))); // NOI18N
-        btnGoMenu.setBorderPainted(false);
-        btnGoMenu.setContentAreaFilled(false);
-        jPanel3.add(btnGoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 80, 40));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 660, 290));
 
         txfSearch.setBackground(new java.awt.Color(30, 40, 53));
         txfSearch.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -305,19 +414,76 @@ public class ViewPort extends javax.swing.JFrame {
         txfSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "IMO to Search", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
         txfSearch.setCaretColor(new java.awt.Color(255, 255, 255));
         txfSearch.setPreferredSize(new java.awt.Dimension(500, 100));
-        txfSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfSearchActionPerformed(evt);
-            }
-        });
-        jPanel3.add(txfSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 440, 90));
+        jPanel3.add(txfSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 440, 80));
 
-        jButton2.setBackground(new java.awt.Color(0, 193, 212));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDrop.png"))); // NOI18N
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 100, 70));
+        btnCleanSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconClean.png"))); // NOI18N
+        btnCleanSearch.setBorder(null);
+        btnCleanSearch.setBorderPainted(false);
+        btnCleanSearch.setContentAreaFilled(false);
+        jPanel3.add(btnCleanSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 740, 640));
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconEdit.png"))); // NOI18N
+        btnEdit.setBorder(null);
+        btnEdit.setBorderPainted(false);
+        btnEdit.setContentAreaFilled(false);
+        jPanel3.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDelete.png"))); // NOI18N
+        btnDelete.setBorder(null);
+        btnDelete.setBorderPainted(false);
+        btnDelete.setContentAreaFilled(false);
+        jPanel3.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+
+        btnDelCollection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDeleteCollection.png"))); // NOI18N
+        btnDelCollection.setBorder(null);
+        btnDelCollection.setBorderPainted(false);
+        btnDelCollection.setContentAreaFilled(false);
+        jPanel3.add(btnDelCollection, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
+
+        btnDelDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDeleteDatabase.png"))); // NOI18N
+        btnDelDB.setBorder(null);
+        btnDelDB.setBorderPainted(false);
+        btnDelDB.setContentAreaFilled(false);
+        jPanel3.add(btnDelDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, -1, -1));
+
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconSearch.png"))); // NOI18N
+        btnSearch.setBorder(null);
+        btnSearch.setBorderPainted(false);
+        btnSearch.setContentAreaFilled(false);
+        jPanel3.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
+
+        btnBack.setBackground(new java.awt.Color(10, 107, 207));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconBack.png"))); // NOI18N
+        btnBack.setBorder(null);
+        btnBack.setBorderPainted(false);
+        btnBack.setContentAreaFilled(false);
+        btnBack.setFocusPainted(false);
+        btnBack.setFocusable(false);
+        btnBack.setPreferredSize(new java.awt.Dimension(45, 45));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -329,25 +495,21 @@ public class ViewPort extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        setSize(new java.awt.Dimension(1296, 728));
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfSearchActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGoMenu;
-    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnCleanForm;
+    private javax.swing.JButton btnCleanSearch;
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnDelCollection;
+    private javax.swing.JButton btnDelDB;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbxCategory;
     private javax.swing.JComboBox<String> cbxType;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

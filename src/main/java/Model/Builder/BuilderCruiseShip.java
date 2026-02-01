@@ -38,12 +38,12 @@ public class BuilderCruiseShip implements Builder{
     
     @Override
     public void setCapacity(int capacity) {
-        cruiseShip.setPassengerCapacity(capacity);
+        cruiseShip.setCapacity(capacity);
     }
     
     @Override
     public void setQuantity(int passengers) {
-        cruiseShip.setPassengers(passengers);
+        cruiseShip.setQuantity(passengers);
     }
 
     @Override

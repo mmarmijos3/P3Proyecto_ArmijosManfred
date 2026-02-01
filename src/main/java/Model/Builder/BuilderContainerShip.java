@@ -39,12 +39,12 @@ public class BuilderContainerShip implements Builder{
     
     @Override
     public void setCapacity(int capacity) {
-        containerShip.setCapacityTEU(capacity);
+        containerShip.setCapacity(capacity);
     }
     
     @Override
     public void setQuantity(int quantity) {
-        containerShip.setContainer(quantity);
+        containerShip.setQuantity(quantity);
     }
 
     @Override

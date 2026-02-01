@@ -23,8 +23,8 @@ public class ControllerPort {
     }
     
     private void prepareButtons(){
-        viewPort.getBtnGoMenu().addActionListener(e -> goToMenu());
-        viewPort.getBtnSave().addActionListener(e -> saveVessel());
+        viewPort.getBtnBack().addActionListener(e -> goToMenu());
+        viewPort.getBtnCreate().addActionListener(e -> saveVessel());
     }
 
     private void goToMenu() {
@@ -91,18 +91,18 @@ public class ControllerPort {
     private boolean validateFormQuantity() {
         boolean succes = true;
         if (!validateFormType()){
-            viewPort.showErrorQuantity("Need type");
+            viewPort.showErrorOccupancy("Need type");
             succes = false;
         }
         if (!validateFormCategory()){
-            viewPort.showErrorQuantity("Need category");
+            viewPort.showErrorOccupancy("Need category");
             succes = false;
         }
         if (!validateFormType() & !validateFormCategory()){
-            viewPort.showErrorQuantity("Need type and category");
+            viewPort.showErrorOccupancy("Need type and category");
             succes = false;
         }
-        if (succes) viewPort.cleanErrorQuantity();
+        if (succes) viewPort.cleanErrorOccupancy();
         return succes;
     }
     

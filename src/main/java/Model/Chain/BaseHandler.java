@@ -3,7 +3,7 @@ package Model.Chain;
 import Model.Entities.User;
 
 public abstract class BaseHandler implements LoginHandler{
-    protected LoginHandler next;
+    private LoginHandler next;
     
     @Override
     public void setNext(LoginHandler next){
@@ -17,5 +17,5 @@ public abstract class BaseHandler implements LoginHandler{
         }
         return null;
     }
-    
+
 }

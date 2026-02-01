@@ -5,7 +5,6 @@ package View;
  * @author Armijos Manfred, Balseca Valeska
  */
 
-import Controller.Port;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,13 +20,9 @@ import javax.swing.JTextField;
 
 public class ViewPort22 extends javax.swing.JFrame {
     
-    private final Port port;
         
     public ViewPort22() {
         initComponents();
-        this.port = new Port(this);
-        port.fullFormVisible();
-        port.loadTableData();
         pnlOperation.setVisible(false);
         pnlPayment.setVisible(false);
         setLocationRelativeTo(null);
@@ -35,317 +30,7 @@ public class ViewPort22 extends javax.swing.JFrame {
         tblStart.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
         tblStart.setRowHeight(28);
     }
-    //<editor-fold defaultstate="collapsed" desc="Getters">
-        
-    public Port getPort() {
-        return port;
-    }
 
-    public ButtonGroup getBgpOperations() {
-        return bgpOperations;
-    }
-
-    public JButton getBtnBilling() {
-        return btnBilling;
-    }
-
-    public JButton getBtnClean() {
-        return btnClean;
-    }
-
-    public JButton getBtnClear() {
-        return btnClear;
-    }
-
-    public JButton getBtnDetele() {
-        return btnDetele;
-    }
-
-    public JButton getBtnDock() {
-        return btnDock;
-    }
-
-    public JButton getBtnExitForm() {
-        return btnExitForm;
-    }
-
-    public JButton getBtnExitService() {
-        return btnExitService;
-    }
-
-    public JButton getBtnExitStatus() {
-        return btnExitStatus;
-    }
-
-    public JButton getBtnForm() {
-        return btnForm;
-    }
-
-    public JButton getBtnOperation() {
-        return btnOperation;
-    }
-
-    public JButton getBtnSearch() {
-        return btnSearch;
-    }
-
-    public JButton getBtnUpdate() {
-        return btnUpdate;
-    }
-
-    public JComboBox<String> getCbxType() {
-        return cbxType;
-    }
-
-    public JCheckBox getChbClean() {
-        return chbClean;
-    }
-
-    public JCheckBox getChbMaintenance() {
-        return chbMaintenance;
-    }
-
-    public JCheckBox getChbRefuel() {
-        return chbRefuel;
-    }
-
-    public JLabel getLbSubtotalT() {
-        return lbSubtotalT;
-    }
-
-    public JLabel getLblBGForm() {
-        return lblBGForm;
-    }
-
-    public JLabel getLblBGService() {
-        return lblBGService;
-    }
-
-    public JLabel getLblBGStatus() {
-        return lblBGStatus;
-    }
-
-    public JLabel getLblDiscount() {
-        return lblDiscount;
-    }
-
-    public JLabel getLblDiscountT() {
-        return lblDiscountT;
-    }
-
-    public JLabel getLblErrorDock() {
-        return lblErrorDock;
-    }
-
-    public JLabel getLblErrorFormCapacity() {
-        return lblErrorFormCapacity;
-    }
-
-    public JLabel getLblErrorFormIMO() {
-        return lblErrorFormIMO;
-    }
-
-    public JLabel getLblErrorFormLength() {
-        return lblErrorFormLength;
-    }
-
-    public JLabel getLblErrorFormName() {
-        return lblErrorFormName;
-    }
-
-    public JLabel getLblErrorFormQuantity() {
-        return lblErrorFormQuantity;
-    }
-
-    public JLabel getLblErrorFormType() {
-        return lblErrorFormType;
-    }
-
-    public JLabel getLblErrorSearch() {
-        return lblErrorSearch;
-    }
-
-    public JLabel getLblExtras() {
-        return lblExtras;
-    }
-
-    public JLabel getLblFormCapacity() {
-        return lblFormCapacity;
-    }
-
-    public JLabel getLblFormIMO() {
-        return lblFormIMO;
-    }
-
-    public JLabel getLblFormLength() {
-        return lblFormLength;
-    }
-
-    public JLabel getLblFormName() {
-        return lblFormName;
-    }
-
-    public JLabel getLblFormQuantity() {
-        return lblFormQuantity;
-    }
-
-    public JLabel getLblFormType() {
-        return lblFormType;
-    }
-
-    public JLabel getLblIVA() {
-        return lblIVA;
-    }
-
-    public JLabel getLblIVAT() {
-        return lblIVAT;
-    }
-
-    public JLabel getLblOperation() {
-        return lblOperation;
-    }
-
-    public JLabel getLblPayment() {
-        return lblPayment;
-    }
-
-    public JLabel getLblServCapacity() {
-        return lblServCapacity;
-    }
-
-    public JLabel getLblServCapacityT() {
-        return lblServCapacityT;
-    }
-
-    public JLabel getLblServImo() {
-        return lblServImo;
-    }
-
-    public JLabel getLblServImoT() {
-        return lblServImoT;
-    }
-
-    public JLabel getLblServLength() {
-        return lblServLength;
-    }
-
-    public JLabel getLblServLengthT() {
-        return lblServLengthT;
-    }
-
-    public JLabel getLblServName() {
-        return lblServName;
-    }
-
-    public JLabel getLblServQuantity() {
-        return lblServQuantity;
-    }
-
-    public JLabel getLblServQuantityT() {
-        return lblServQuantityT;
-    }
-
-    public JLabel getLblServType() {
-        return lblServType;
-    }
-
-    public JLabel getLblSubtotal() {
-        return lblSubtotal;
-    }
-
-    public JLabel getLblSubtotal2() {
-        return lblSubtotal2;
-    }
-
-    public JLabel getLblSubtotal2T() {
-        return lblSubtotal2T;
-    }
-
-    public JLabel getLblTotal() {
-        return lblTotal;
-    }
-
-    public JLabel getLblTotalT() {
-        return lblTotalT;
-    }
-
-    public JPanel getPnlData() {
-        return pnlData;
-    }
-
-    public JPanel getPnlDock() {
-        return pnlDock;
-    }
-
-    public JPanel getPnlForm() {
-        return pnlForm;
-    }
-
-    public JPanel getPnlOperation() {
-        return pnlOperation;
-    }
-
-    public JPanel getPnlPayment() {
-        return pnlPayment;
-    }
-
-    public JPanel getPnlSearch() {
-        return pnlSearch;
-    }
-
-    public JPanel getPnlService() {
-        return pnlService;
-    }
-
-    public JPanel getPnlStatus() {
-        return pnlStatus;
-    }
-
-    public JRadioButton getRbtLoading() {
-        return rbtLoading;
-    }
-
-    public JRadioButton getRbtUnloading() {
-        return rbtUnloading;
-    }
-
-    public JScrollPane getSplTableStatus() {
-        return splTableStatus;
-    }
-
-    public JTable getTblStart() {
-        return tblStart;
-    }
-
-    public JTabbedPane getTplPort() {
-        return tplPort;
-    }
-
-    public JTextField getTxfCapacity() {
-        return txfCapacity;
-    }
-
-    public JTextField getTxfImo() {
-        return txfImo;
-    }
-
-    public JTextField getTxfLength() {
-        return txfLength;
-    }
-
-    public JTextField getTxfName() {
-        return txfName;
-    }
-
-    public JTextField getTxfQuantity() {
-        return txfQuantity;
-    }
-
-    public JTextField getTxfSearch() {
-        return txfSearch;
-    }
-    // </editor-fold>
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -930,55 +615,42 @@ public class ViewPort22 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDockActionPerformed
-        getPort().dockVessel();
     }//GEN-LAST:event_btnDockActionPerformed
 
     private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
-        getPort().bill();
     }//GEN-LAST:event_btnBillingActionPerformed
 
     private void btnOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOperationActionPerformed
-        getPort().operations();
     }//GEN-LAST:event_btnOperationActionPerformed
 
     private void btnFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormActionPerformed
-        getPort().registerVessel();
     }//GEN-LAST:event_btnFormActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        getPort().cleanSearch();
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        getPort().searchVessel();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnDeteleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeteleActionPerformed
-        getPort().deleteVessel();
     }//GEN-LAST:event_btnDeteleActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        getPort().Edit();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnExitStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitStatusActionPerformed
-        getPort().exit();
     }//GEN-LAST:event_btnExitStatusActionPerformed
 
     private void btnExitFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitFormActionPerformed
-        getPort().exit();
     }//GEN-LAST:event_btnExitFormActionPerformed
 
     private void btnExitServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitServiceActionPerformed
-        getPort().exit();
     }//GEN-LAST:event_btnExitServiceActionPerformed
 
     private void btnDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDropActionPerformed
-        getPort().dropDatabase();
     }//GEN-LAST:event_btnDropActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        getPort().clearQueue();
     }//GEN-LAST:event_btnClearActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

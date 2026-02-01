@@ -65,6 +65,14 @@ public abstract class Vessel implements IDockable{
     }
 
     public abstract String getType();
+    
+    public abstract int getCapacity();
+
+    public abstract void setCapacity(int capacity);
+
+    public abstract int getQuantity();
+
+    public abstract void setQuantity(int quantity);
 
     
     @Override
