@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
@@ -20,8 +21,9 @@ public class ViewPort extends javax.swing.JFrame {
         initComponents();
         setUndecorated(true);
         setLocationRelativeTo(null);
-        tblVesselQueue.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 18));
+        tblVesselQueue.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 18));
         tblVesselQueue.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
+        tblVesselQueue.getTableHeader().setBackground(Color.white);
         tblVesselQueue.setRowHeight(28);
     }
     
@@ -396,7 +398,10 @@ public class ViewPort extends javax.swing.JFrame {
         btnCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 100, 50));
 
-        tblVesselQueue.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+
+        tblVesselQueue.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblVesselQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -405,7 +410,7 @@ public class ViewPort extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "IMO", "Name", "Type", "Category", "Occupancy"
+                "IMO", "Name", "Type", "Category", "Occupancy %"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -416,6 +421,15 @@ public class ViewPort extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblVesselQueue.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblVesselQueue.setFocusable(false);
+        tblVesselQueue.setOpaque(false);
+        tblVesselQueue.setSelectionBackground(new java.awt.Color(0, 153, 204));
+        tblVesselQueue.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblVesselQueue.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblVesselQueue.setShowGrid(true);
+        tblVesselQueue.getTableHeader().setResizingAllowed(false);
+        tblVesselQueue.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblVesselQueue);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 720, 380));

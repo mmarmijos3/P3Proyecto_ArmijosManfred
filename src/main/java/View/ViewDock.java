@@ -34,14 +34,14 @@ public class ViewDock extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
-        btnCreate = new javax.swing.JButton();
-        lblServImo6 = new javax.swing.JLabel();
-        lblServImo1 = new javax.swing.JLabel();
-        lblServImo = new javax.swing.JLabel();
-        lblServImo3 = new javax.swing.JLabel();
-        lblServImo2 = new javax.swing.JLabel();
-        lblServImo5 = new javax.swing.JLabel();
-        lblServImo4 = new javax.swing.JLabel();
+        btnDock = new javax.swing.JButton();
+        lblServName = new javax.swing.JLabel();
+        lblServIMO = new javax.swing.JLabel();
+        lblServType = new javax.swing.JLabel();
+        lblPaySubtotal = new javax.swing.JLabel();
+        lblPayDiscount = new javax.swing.JLabel();
+        lblPayIVA = new javax.swing.JLabel();
+        lblPayTotal = new javax.swing.JLabel();
         rbtLoading = new javax.swing.JRadioButton();
         rbtUnloading = new javax.swing.JRadioButton();
         chbRefuel = new javax.swing.JCheckBox();
@@ -53,7 +53,9 @@ public class ViewDock extends javax.swing.JFrame {
         btnDelCollection = new javax.swing.JButton();
         btnDelDB = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblBills = new javax.swing.JTable();
+        btnPayUpdate = new javax.swing.JButton();
+        btnPaySave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,65 +79,62 @@ public class ViewDock extends javax.swing.JFrame {
         btnBack.setPreferredSize(new java.awt.Dimension(45, 45));
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, -1, -1));
 
-        btnCreate.setBorder(null);
-        btnCreate.setBorderPainted(false);
-        btnCreate.setContentAreaFilled(false);
-        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+        btnDock.setBorder(null);
+        btnDock.setBorderPainted(false);
+        btnDock.setContentAreaFilled(false);
+        btnDock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateActionPerformed(evt);
+                btnDockActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 50, 160));
+        jPanel1.add(btnDock, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 50, 160));
 
-        lblServImo6.setBackground(new java.awt.Color(255, 255, 255));
-        lblServImo6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblServImo6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblServImo6.setText("daw");
-        jPanel1.add(lblServImo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 300, 45));
+        lblServName.setBackground(new java.awt.Color(255, 255, 255));
+        lblServName.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblServName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblServName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 300, 45));
 
-        lblServImo1.setBackground(new java.awt.Color(255, 255, 255));
-        lblServImo1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblServImo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblServImo1.setText("daw");
-        jPanel1.add(lblServImo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, 45));
+        lblServIMO.setBackground(new java.awt.Color(255, 255, 255));
+        lblServIMO.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblServIMO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblServIMO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, 45));
 
-        lblServImo.setBackground(new java.awt.Color(255, 255, 255));
-        lblServImo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblServImo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblServImo.setText("daw");
-        jPanel1.add(lblServImo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 300, 45));
+        lblServType.setBackground(new java.awt.Color(255, 255, 255));
+        lblServType.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblServType.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblServType, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 300, 45));
 
-        lblServImo3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblServImo3.setForeground(new java.awt.Color(255, 255, 255));
-        lblServImo3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblServImo3.setText("0");
-        lblServImo3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblServImo3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Subtotal", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel1.add(lblServImo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 300, 70));
+        lblPaySubtotal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPaySubtotal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPaySubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPaySubtotal.setText("0");
+        lblPaySubtotal.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblPaySubtotal.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Subtotal", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.add(lblPaySubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 300, 70));
 
-        lblServImo2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblServImo2.setForeground(new java.awt.Color(255, 255, 255));
-        lblServImo2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblServImo2.setText("0");
-        lblServImo2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblServImo2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Total", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel1.add(lblServImo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 300, 70));
+        lblPayDiscount.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPayDiscount.setForeground(new java.awt.Color(255, 255, 255));
+        lblPayDiscount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPayDiscount.setText("0");
+        lblPayDiscount.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblPayDiscount.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Discount", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.add(lblPayDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 300, 70));
 
-        lblServImo5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblServImo5.setForeground(new java.awt.Color(255, 255, 255));
-        lblServImo5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblServImo5.setText("0");
-        lblServImo5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblServImo5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "IVA", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel1.add(lblServImo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 300, 70));
+        lblPayIVA.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPayIVA.setForeground(new java.awt.Color(255, 255, 255));
+        lblPayIVA.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPayIVA.setText("0");
+        lblPayIVA.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblPayIVA.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "IVA", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.add(lblPayIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 300, 70));
 
-        lblServImo4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblServImo4.setForeground(new java.awt.Color(255, 255, 255));
-        lblServImo4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblServImo4.setText("0");
-        lblServImo4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblServImo4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Discount", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel1.add(lblServImo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 300, 70));
+        lblPayTotal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPayTotal.setForeground(new java.awt.Color(255, 255, 255));
+        lblPayTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPayTotal.setText("0");
+        lblPayTotal.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblPayTotal.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Total", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.add(lblPayTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 300, 70));
 
         rbtLoading.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         rbtLoading.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,7 +193,7 @@ public class ViewDock extends javax.swing.JFrame {
                 btnEditActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 285, 100, 50));
+        jPanel1.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 100, 50));
 
         btnDelete.setBorder(null);
         btnDelete.setBorderPainted(false);
@@ -226,7 +225,7 @@ public class ViewDock extends javax.swing.JFrame {
         });
         jPanel1.add(btnDelDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1147, 285, 100, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBills.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -245,9 +244,29 @@ public class ViewDock extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblBills);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 880, 320));
+
+        btnPayUpdate.setBorder(null);
+        btnPayUpdate.setBorderPainted(false);
+        btnPayUpdate.setContentAreaFilled(false);
+        btnPayUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPayUpdateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPayUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 650, 100, 50));
+
+        btnPaySave.setBorder(null);
+        btnPaySave.setBorderPainted(false);
+        btnPaySave.setContentAreaFilled(false);
+        btnPaySave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaySaveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPaySave, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 650, 100, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDock.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -284,18 +303,28 @@ public class ViewDock extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+    private void btnDockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDockActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCreateActionPerformed
+    }//GEN-LAST:event_btnDockActionPerformed
+
+    private void btnPayUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPayUpdateActionPerformed
+
+    private void btnPaySaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaySaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPaySaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelCollection;
     private javax.swing.JButton btnDelDB;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDock;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnPaySave;
+    private javax.swing.JButton btnPayUpdate;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JCheckBox chbClean;
     private javax.swing.JCheckBox chbMaintenance;
@@ -303,15 +332,15 @@ public class ViewDock extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblServImo;
-    private javax.swing.JLabel lblServImo1;
-    private javax.swing.JLabel lblServImo2;
-    private javax.swing.JLabel lblServImo3;
-    private javax.swing.JLabel lblServImo4;
-    private javax.swing.JLabel lblServImo5;
-    private javax.swing.JLabel lblServImo6;
+    private javax.swing.JLabel lblPayDiscount;
+    private javax.swing.JLabel lblPayIVA;
+    private javax.swing.JLabel lblPaySubtotal;
+    private javax.swing.JLabel lblPayTotal;
+    private javax.swing.JLabel lblServIMO;
+    private javax.swing.JLabel lblServName;
+    private javax.swing.JLabel lblServType;
     private javax.swing.JRadioButton rbtLoading;
     private javax.swing.JRadioButton rbtUnloading;
+    private javax.swing.JTable tblBills;
     // End of variables declaration//GEN-END:variables
 }
