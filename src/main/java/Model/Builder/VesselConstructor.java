@@ -10,6 +10,16 @@ import Model.Entities.Vessel;
 public class VesselConstructor {
     private BuilderDirector director = new BuilderDirector();
     
+    public Vessel contructFromDoc(Object[] info){
+        return contructVessel(
+            info[2].toString(), // type
+            info[3].toString(), // category
+            info[1].toString(), // name
+            info[0].toString(), // imo
+            (int) info[8]       // quantity
+        );
+    }
+    
     public Vessel contructVessel(String type, String category, String name, String imo, int quantity){
         switch (type) {
             case "CRUISE" -> {return contructCruiseShip(category, name, imo, quantity);}

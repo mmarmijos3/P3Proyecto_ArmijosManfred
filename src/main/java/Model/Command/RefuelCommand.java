@@ -3,16 +3,18 @@ package Model.Command;
 import Model.Entities.Vessel;
 
 public class RefuelCommand implements Command{
-    private Receiver receiver;
+    private BillReceiver receiver;
     private Vessel vessel;
+    private boolean isSelected;
 
-    public RefuelCommand(Receiver receiver, Vessel vessel) {
+    public RefuelCommand(BillReceiver receiver, Vessel vessel, boolean isSelected) {
         this.receiver = receiver;
         this.vessel = vessel;
+        this.isSelected = isSelected;
     }
     
     @Override
     public void execute() {
-        receiver.aplicarRefuel(vessel, 1200);
+        receiver.aplicarRefuel(vessel, isSelected);
     }
 }

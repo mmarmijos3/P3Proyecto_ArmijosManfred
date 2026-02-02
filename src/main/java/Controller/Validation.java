@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.DataBase.MongoConnection2;
 
 /**
  *
@@ -122,18 +121,11 @@ public class Validation {
             return "IMO number is required";
         } else if (!validateIMO(imo)) {
             return "Invalid IMO number";
-        }else if(isIMOinQueue(imo)){
-            return "IMO is in Queue";
         }
         
         return null;
     }
     
-    private static boolean isIMOinQueue(String imo){
-        boolean success;
-          success = !(MongoConnection2.getInstance().searchDocument(imo) == null);
-        return success && !isEdition();
-    }
 
 
 }

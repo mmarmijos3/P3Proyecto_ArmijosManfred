@@ -7,16 +7,18 @@ import Model.Entities.Vessel;
  * @author Usuario
  */
 public class CleanCommand implements Command{
-    private Receiver receiver;
+    private BillReceiver receiver;
     private Vessel vessel;
+    private boolean isSelected;
 
-    public CleanCommand(Receiver receiver, Vessel vessel) {
+    public CleanCommand(BillReceiver receiver, Vessel vessel, boolean isSelected) {
         this.receiver = receiver;
         this.vessel = vessel;
+        this.isSelected = isSelected;
     }
     
     @Override
     public void execute() {
-        receiver.aplicarClean(vessel);
+        receiver.aplicarClean(vessel, isSelected);
     }
 }

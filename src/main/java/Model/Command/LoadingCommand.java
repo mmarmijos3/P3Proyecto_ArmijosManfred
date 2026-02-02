@@ -3,16 +3,18 @@ package Model.Command;
 import Model.Entities.Vessel;
 
 public class LoadingCommand implements Command {
-    private Receiver receiver;
+    private BillReceiver receiver;
     private Vessel vessel;
+    private boolean isSelected;
 
-    public LoadingCommand(Receiver receiver, Vessel vessel) {
+    public LoadingCommand(BillReceiver receiver, Vessel vessel, boolean isSelected) {
         this.receiver = receiver;
         this.vessel = vessel;
+        this.isSelected = isSelected;
     }
     
         @Override
     public void execute() {
-        receiver.aplicarLoading(vessel);
+        receiver.aplicarLoading(vessel, isSelected);
     }
 }

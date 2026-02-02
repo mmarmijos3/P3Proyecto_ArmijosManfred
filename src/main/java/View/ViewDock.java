@@ -1,6 +1,8 @@
 package View;
 
+import java.util.List;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -8,9 +10,7 @@ import javax.swing.JButton;
  */
 public class ViewDock extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Plantilla
-     */
+
     public ViewDock() {
         initComponents();
         setUndecorated(true);
@@ -21,17 +21,276 @@ public class ViewDock extends javax.swing.JFrame {
         return btnBack;
     }
     
+    //<editor-fold defaultstate="collapsed" desc="BUTTONS">
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    public JButton getBtnCleanServices() {
+        return btnClean;
+    }
+
+
+    public JButton getBtnPaySave() {
+        return btnPaySave;
+    }
+
+    public JButton getBtnDelCollection() {
+        return btnDelCollection;
+    }
+
+    public JButton getBtnDelDB() {
+        return btnDelDB;
+    }
+
+    public JButton getBtnDelete() {
+        return btnDelete;
+    }
+
+    public JButton getBtnEdit() {
+        return btnEdit;
+    }
+
+
+    public JButton getBtnUpdate() {
+        return btnClean;
+    }
+    // </editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="DATA VESSEL">
+    
+    //<editor-fold defaultstate="collapsed" desc="NAME">
+    public String getServNameForm() {
+        return lblServName.getText();
+    }
+    
+    public void setServNameForm(String name){
+        lblServName.setText(name);
+    }
+    
+    public void cleanServNameForm(){
+        setServNameForm("");
+    }
+    
+//    public void showlErrorName(String error) {
+//        lblErrorName.setText(error);
+//    }
+//    
+//    public void cleanlErrorName() {
+//        lblErrorName.setText("");
+//    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="IMO">
+    public String getServIMOForm() {
+        return lblServIMO.getText();
+    }
+    
+    public void setServIMOForm(String imo){
+        lblServIMO.setText(imo);
+    }
+    
+    public void cleanIMOForm(){
+        setServIMOForm("");
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="TYPE">
+    public String getServTypeForm(){
+        return lblServType.getText();
+    }
+    
+    public void setServTypeForm(String type){
+        lblServType.setText(type);
+    }
+    
+    public void cleanServTypeForm(){
+        setServTypeForm("");
+    }
+    
+    //</editor-fold>
+    
+//    //<editor-fold defaultstate="collapsed" desc="CATEGORY">
+//    public String getCategoryForm(){
+//        return cbxCategory.getSelectedItem().toString();
+//    }
+//    
+//    public void setCategoryForm(Object category){
+//        cbxCategory.setSelectedItem(category);
+//    }
+//    
+//    public void cleanCategoryForm(){
+//        setCategoryForm(0);
+//    }
+//    
+//    public void showErrorCategory(String error) {
+//        lblErrorCategory.setText(error);
+//    }
+//    
+//    public void cleanErrorCategory() {
+//        lblErrorCategory.setText("");
+//    }
+//    //</editor-fold>
+//    
+//    //<editor-fold defaultstate="collapsed" desc="OCCUPANCY">
+//    public int getOccupancyForm() {
+//        return sldOccupancy.getValue();
+//    }
+//    
+//    public void setOccupancyForm(int occupancy) {
+//        sldOccupancy.setValue(occupancy);
+//    }
+//    
+//    public void cleanOccupancyForm() {
+//        setOccupancyForm(0);
+//    }
+//    
+//    public void showErrorOccupancy(String error) {
+//        lblErrorOccupancy.setText(error);
+//    }
+//    
+//    public void cleanErrorOccupancy() {
+//        lblErrorOccupancy.setText("");
+//    }
+//    //</editor-fold>
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="DATA TABLE">
+    public void loadDataToTable(List<Object[]> data) {
+        
+        DefaultTableModel tableModel = (DefaultTableModel) tblBills.getModel();
+        
+        tableModel.setRowCount(0);
+        
+        for(Object[] row : data) {
+            tableModel.addRow(row);
+        }
+    }
+    
+    public int getSelectedBill(){
+        return tblBills.getSelectedRow();
+    }
+    
+    public void clearBillSelection() {
+        tblBills.clearSelection();
+    }
+    
+    public boolean isAnyBillSelected() {
+        return tblBills.getSelectedRow() != -1;
+    }
+    
+    public Object getInfoSelectedBill(int col){
+        return tblBills.getValueAt(getSelectedBill(), col);
+    }
+    
+    public Object getIDToEdit(){
+        return getInfoSelectedBill(0);
+    }
+    
+    public Object getNameToEdit(){
+        return getInfoSelectedBill(1);
+    }
+    
+    public Object getIMOToEdit(){
+        return getInfoSelectedBill(2);
+    }
+    
+    public Object getTypeToEdit(){
+        return getInfoSelectedBill(3);
+    }
+    
+    public Object getTotalToEdit(){
+        return getInfoSelectedBill(4);
+    }
+    
+    
+    public void enableTable(boolean state){
+        tblBills.setEnabled(state);
+    }
+    // </editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="SERVICES">
+    
+    //<editor-fold defaultstate="collapsed" desc="OPERATIONS">
+    public boolean getLoading(){
+        return rbtLoading.isSelected();
+    }
+    
+    public void setLoading(boolean estado){
+        rbtLoading.setSelected(estado);
+    }
+    
+    public boolean getUnloading(){
+        return rbtUnloading.isSelected();
+    }
+    
+    public void setUnloading(boolean estado){
+        rbtUnloading.setSelected(estado);
+    }
+    
+    public boolean getMotorSelecionado(){
+        return getLoading() || getUnloading();
+    }
+    
+    public void cleanOperations(){
+        rbgOperations.clearSelection();
+    }
+    // </editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="EXTRAS">
+    public boolean isSelectedClean() {
+        return chbClean.isSelected();
+    }
+
+    public boolean isSelectedMaintenance() {
+        return chbMaintenance.isSelected();
+    }
+
+    public boolean isSelectedRefuel() {
+        return chbRefuel.isSelected();
+    }
+    
+    public void selectClean(boolean selection) {
+        chbClean.setSelected(selection);
+    }
+
+    public void selectMaintenance(boolean selection) {
+        chbMaintenance.setSelected(selection);
+    }
+
+    public void selectRefuel(boolean selection) {
+        chbRefuel.setSelected(selection);
+    }
+    
+    
+    public void cleanExtras(){
+        selectClean(false);
+        selectMaintenance(false);
+        selectRefuel(false);
+    }
+    // </editor-fold>
+    
+    // </editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="CLEAN">
+    public void cleanAll(){
+        cleanServNameForm();
+        cleanIMOForm();
+        cleanServTypeForm();
+        cleanOperations();
+        cleanExtras();
+    }
+    // </editor-fold>
     
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rbgOperations = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         btnDock = new javax.swing.JButton();
@@ -47,7 +306,7 @@ public class ViewDock extends javax.swing.JFrame {
         chbRefuel = new javax.swing.JCheckBox();
         chbMaintenance = new javax.swing.JCheckBox();
         chbClean = new javax.swing.JCheckBox();
-        btnUpdate = new javax.swing.JButton();
+        btnClean = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnDelCollection = new javax.swing.JButton();
@@ -82,11 +341,6 @@ public class ViewDock extends javax.swing.JFrame {
         btnDock.setBorder(null);
         btnDock.setBorderPainted(false);
         btnDock.setContentAreaFilled(false);
-        btnDock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDockActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnDock, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 50, 160));
 
         lblServName.setBackground(new java.awt.Color(255, 255, 255));
@@ -136,12 +390,14 @@ public class ViewDock extends javax.swing.JFrame {
         lblPayTotal.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Total", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel1.add(lblPayTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 300, 70));
 
+        rbgOperations.add(rbtLoading);
         rbtLoading.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         rbtLoading.setForeground(new java.awt.Color(255, 255, 255));
         rbtLoading.setText("Loading");
         rbtLoading.setContentAreaFilled(false);
         jPanel1.add(rbtLoading, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
 
+        rbgOperations.add(rbtUnloading);
         rbtUnloading.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         rbtUnloading.setForeground(new java.awt.Color(255, 255, 255));
         rbtUnloading.setText("Unloading");
@@ -175,54 +431,29 @@ public class ViewDock extends javax.swing.JFrame {
         chbClean.setFocusPainted(false);
         jPanel1.add(chbClean, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 130, -1, -1));
 
-        btnUpdate.setBorder(null);
-        btnUpdate.setBorderPainted(false);
-        btnUpdate.setContentAreaFilled(false);
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 100, 50));
+        btnClean.setBorder(null);
+        btnClean.setBorderPainted(false);
+        btnClean.setContentAreaFilled(false);
+        jPanel1.add(btnClean, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 100, 50));
 
         btnEdit.setBorder(null);
         btnEdit.setBorderPainted(false);
         btnEdit.setContentAreaFilled(false);
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 100, 50));
 
         btnDelete.setBorder(null);
         btnDelete.setBorderPainted(false);
         btnDelete.setContentAreaFilled(false);
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 285, 100, 50));
 
         btnDelCollection.setBorder(null);
         btnDelCollection.setBorderPainted(false);
         btnDelCollection.setContentAreaFilled(false);
-        btnDelCollection.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelCollectionActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnDelCollection, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 285, 100, 50));
 
         btnDelDB.setBorder(null);
         btnDelDB.setBorderPainted(false);
         btnDelDB.setContentAreaFilled(false);
-        btnDelDB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelDBActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnDelDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1147, 285, 100, 50));
 
         tblBills.setModel(new javax.swing.table.DefaultTableModel(
@@ -251,21 +482,11 @@ public class ViewDock extends javax.swing.JFrame {
         btnPayUpdate.setBorder(null);
         btnPayUpdate.setBorderPainted(false);
         btnPayUpdate.setContentAreaFilled(false);
-        btnPayUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPayUpdateActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnPayUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 650, 100, 50));
 
         btnPaySave.setBorder(null);
         btnPaySave.setBorderPainted(false);
         btnPaySave.setContentAreaFilled(false);
-        btnPaySave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPaySaveActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnPaySave, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 650, 100, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDock.png"))); // NOI18N
@@ -283,41 +504,10 @@ public class ViewDock extends javax.swing.JFrame {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnDelCollectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelCollectionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDelCollectionActionPerformed
-
-    private void btnDelDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelDBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDelDBActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnDockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDockActionPerformed
-
-    private void btnPayUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPayUpdateActionPerformed
-
-    private void btnPaySaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaySaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPaySaveActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnClean;
     private javax.swing.JButton btnDelCollection;
     private javax.swing.JButton btnDelDB;
     private javax.swing.JButton btnDelete;
@@ -325,7 +515,6 @@ public class ViewDock extends javax.swing.JFrame {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnPaySave;
     private javax.swing.JButton btnPayUpdate;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JCheckBox chbClean;
     private javax.swing.JCheckBox chbMaintenance;
     private javax.swing.JCheckBox chbRefuel;
@@ -339,6 +528,7 @@ public class ViewDock extends javax.swing.JFrame {
     private javax.swing.JLabel lblServIMO;
     private javax.swing.JLabel lblServName;
     private javax.swing.JLabel lblServType;
+    private javax.swing.ButtonGroup rbgOperations;
     private javax.swing.JRadioButton rbtLoading;
     private javax.swing.JRadioButton rbtUnloading;
     private javax.swing.JTable tblBills;
