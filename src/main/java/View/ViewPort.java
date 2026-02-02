@@ -478,7 +478,7 @@ public class ViewPort extends javax.swing.JFrame {
         btnBack.setPreferredSize(new java.awt.Dimension(45, 45));
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1235, 0, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconPort.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconPort.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

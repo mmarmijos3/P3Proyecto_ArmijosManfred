@@ -79,7 +79,6 @@ public class ViewLogin extends javax.swing.JFrame {
         txfUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txfUsername.setText("admin");
         txfUsername.setBorder(null);
-        txfUsername.setCaretColor(new java.awt.Color(255, 255, 255));
         txfUsername.setOpaque(true);
         txfUsername.setPreferredSize(new java.awt.Dimension(500, 100));
         txfUsername.addActionListener(new java.awt.event.ActionListener() {
@@ -87,13 +86,12 @@ public class ViewLogin extends javax.swing.JFrame {
                 txfUsernameActionPerformed(evt);
             }
         });
-        pnlBGLogin.add(txfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 315, 260, 40));
+        pnlBGLogin.add(txfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 315, 290, 40));
 
         psfPassword.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         psfPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         psfPassword.setText("admin");
         psfPassword.setBorder(null);
-        psfPassword.setCaretColor(new java.awt.Color(255, 255, 255));
         psfPassword.setOpaque(true);
         pnlBGLogin.add(psfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 435, 290, 40));
 
@@ -110,7 +108,7 @@ public class ViewLogin extends javax.swing.JFrame {
         btnLogin.setFocusPainted(false);
         pnlBGLogin.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 540, 290, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconLogin.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconLogin.png"))); // NOI18N
         pnlBGLogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

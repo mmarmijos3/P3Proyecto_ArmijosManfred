@@ -80,7 +80,7 @@ public class ViewMenu extends javax.swing.JFrame {
         btnBack.setPreferredSize(new java.awt.Dimension(45, 45));
         pnlBGLogin.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconMenu.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconMenu.png"))); // NOI18N
         pnlBGLogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
