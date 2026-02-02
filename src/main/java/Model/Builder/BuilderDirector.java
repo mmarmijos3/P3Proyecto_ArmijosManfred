@@ -24,72 +24,83 @@ public class BuilderDirector {
         builder.setQuantity(quantity);
     }
     
+    // Small luxury cruise ship standard
     public void contructCruiseShipBoutique(String name, String imo, int quantity){
         setUniqueData(name, imo, quantity);
         builder.setCategory("SMALL");
-        builder.setLength(220);
-        builder.setBeam(30);
-        builder.setDraft(30);
-        builder.setCapacity(1500);
+        builder.setLength(210);
+        builder.setBeam(26);
+        builder.setDraft(6.7);
+        builder.setCapacity(600);
     }
     
+    // Standard mid-size cruise ship standard
     public void contructCruiseShipStandard(String name, String imo, int quantity){
         setUniqueData(name, imo, quantity);
         builder.setCategory("MEDIUM");
-        builder.setLength(300);
-        builder.setBeam(30);
-        builder.setDraft(30);
-        builder.setCapacity(3500);
+        builder.setLength(325);
+        builder.setBeam(37);
+        builder.setDraft(8.3);
+        builder.setCapacity(3950);
     }
+    
+    // Large mega cruise ship standard
     public void contructCruiseShipMega(String name, String imo, int quantity){
         setUniqueData(name, imo, quantity);
         builder.setCategory("LARGE");
-        builder.setLength(340);
-        builder.setBeam(30);
-        builder.setDraft(30);
-        builder.setCapacity(5500);
+        builder.setLength(339);
+        builder.setBeam(39);
+        builder.setDraft(9);
+        builder.setCapacity(4375);
     }
+    
+    // Extra large icon-class cruise ship standard
     public void contructCruiseShipIcon(String name, String imo, int quantity){
         setUniqueData(name, imo, quantity);
         builder.setCategory("EXTRALARGE");
-        builder.setLength(365);
-        builder.setBeam(30);
-        builder.setDraft(30);
-        builder.setCapacity(7600);
+        builder.setLength(362);
+        builder.setBeam(66);
+        builder.setDraft(9.3);
+        builder.setCapacity(6988);
     }
     
+    // Small feeder container ship standard
     public void contructContainerShipFeeder(String name, String imo, int quantity){
         setUniqueData(name, imo, quantity);
         builder.setCategory("SMALL");
-        builder.setLength(200);
-        builder.setBeam(30);
-        builder.setDraft(30);
-        builder.setCapacity(3000);
+        builder.setLength(172);
+        builder.setBeam(27);
+        builder.setDraft(10);
+        builder.setCapacity(2500);
     }
 
+    // Medium Post-Panamax container ship standard
     public void contructContainerShipPostPanamax(String name, String imo, int quantity){
         setUniqueData(name, imo, quantity);
         builder.setCategory("MEDIUM");
-        builder.setLength(350);
-        builder.setBeam(30);
-        builder.setDraft(30);
-        builder.setCapacity(10000);
+        builder.setLength(347);
+        builder.setBeam(43);
+        builder.setDraft(14.5);
+        builder.setCapacity(15500);
     }
+    
+    // Large Neopanamax container ship standard
     public void contructContainerShipNeopanamax(String name, String imo, int quantity){
         setUniqueData(name, imo, quantity);
         builder.setCategory("LARGE");
         builder.setLength(366);
-        builder.setBeam(30);
-        builder.setDraft(30);
-        builder.setCapacity(14500);
+        builder.setBeam(48);
+        builder.setDraft(15.2);
+        builder.setCapacity(13500);
     }
+    
+    // Extra large Ultra Large Container Ship standard
     public void contructContainerShipUltraLarge(String name, String imo, int quantity){
         setUniqueData(name, imo, quantity);
         builder.setCategory("EXTRALARGE");
         builder.setLength(400);
-        builder.setBeam(30);
-        builder.setDraft(30);
-        builder.setCapacity(24000);
+        builder.setBeam(61);
+        builder.setDraft(16);
+        builder.setCapacity(23756);
     }
-    
 }

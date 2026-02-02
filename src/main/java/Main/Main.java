@@ -1,6 +1,7 @@
 package Main;
 
 import Controller.MainController;
+import View.ViewLogin;
 
 /**
  *
@@ -10,5 +11,6 @@ import Controller.MainController;
 public class Main {
     public static void main(String[] args){
         MainController.showLogin();
+        //new ViewLogin().setVisible(true);
     }
 }

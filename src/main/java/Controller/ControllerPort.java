@@ -120,8 +120,12 @@ public class ControllerPort {
     }
     
     private void deleteVessel(){
-        modelPort.deleteVesselInQueue(viewPort.getIMOToEdit().toString());
-        sendDataToTable();
+        if(viewPort.isAnyVesselSelected()){
+            modelPort.deleteVesselInQueue(viewPort.getIMOToEdit().toString());
+            sendDataToTable();
+            viewPort.clearVesselSelection();
+        }
+        
     }
     
     private void deleteCollection() {
@@ -135,11 +139,13 @@ public class ControllerPort {
     }
     
     public void searchVessel(){
-        sendFindToTable();
+        if(validSearch())
+            sendFindToTable();
     }
     
     private void cleanSearch() {
-        //viewPort.sear();
+        viewPort.cleanErrorSearch();
+        viewPort.cleanIMOToSearch();
         sendDataToTable();
     }
     
@@ -148,7 +154,7 @@ public class ControllerPort {
     }
     
     private void sendFindToTable(){
-        viewPort.loadDataToTable(modelPort.searchVesselInQueue(viewPort.getIMOForm()));
+        viewPort.loadDataToTable(modelPort.searchVesselInQueue(viewPort.getIMOToSearch()));
     }
     
     
@@ -180,6 +186,9 @@ public class ControllerPort {
     }
     
     private boolean isIMOChange(){
+        if(viewPort.getSelectedVessel() == -1){
+            return true;
+        }
         return !viewPort.getIMOForm().equals(viewPort.getIMOToEdit().toString());
     }
     
@@ -234,7 +243,17 @@ public class ControllerPort {
         return succes;
     }
     
-    
+    private boolean validSearch(){
+        if(viewPort.getIMOToSearch().isEmpty()){
+            viewPort.showErrorSearch("Input an IMO");
+            return false;
+        }
+        if(!isIMOInQueue(viewPort.getIMOToSearch())){
+            viewPort.showErrorSearch("Vessel not found");
+            return false;
+        }
+        return true;
+    }
     
     
 }
