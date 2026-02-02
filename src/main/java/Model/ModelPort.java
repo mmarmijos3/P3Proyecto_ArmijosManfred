@@ -10,9 +10,16 @@ import org.bson.Document;
 
 public class ModelPort {
     
-    private OperationsCRUD crud = new CRUDVessel();
-    private VesselConstructor constructor = new VesselConstructor();
-    private DocumentManage docManager = new DocumentManage();
+    private OperationsCRUD crud;
+    private VesselConstructor constructor;
+    private DocumentManage docManager;
+
+    public ModelPort() {
+        this.crud = new CRUDVessel();
+        this.constructor = new VesselConstructor();
+        this.docManager = new DocumentManage();
+    }
+    
     
 
     private Document documentVessel(Vessel vessel){
@@ -27,8 +34,8 @@ public class ModelPort {
         crud.create(documentVessel(createVessel(type, category, name, imo, occupancy)));
     }
     
-    public void updateVesselInQueue(String type, String category, String name, String imo, int occupancy) {
-        crud.update(imo, documentVessel(createVessel(type, category, name, imo, occupancy)));
+    public void updateVesselInQueue(String imoEdit, String type, String category, String name, String imo, int occupancy) {
+        crud.update(imoEdit, documentVessel(createVessel(type, category, name, imo, occupancy)));
     }
     
     public List<Object[]> getAllQueue(){
@@ -36,7 +43,7 @@ public class ModelPort {
     }
     
     public List<Object[]> searchVesselInQueue(String imo){
-        return docManager.docListToObjList(crud.read());
+        return docManager.docListToObjList(crud.find(imo));
     }
     
     public void deleteVesselInQueue(String imo){

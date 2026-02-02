@@ -8,13 +8,15 @@ package Model.Entities;
 public abstract class Vessel implements IDockable{
     private String name;    // Vessel name (e.g., "Man Arm", "Queen Val 2")
     private String imo;     // International Maritime Organization number (unique 7-digit identifier)
+    private String category;
     private double length;  // Vessel length in meters (Length Overall - LOA)
     private double beam;
     private double draft;
 
-    public Vessel(String name, String imo, double length, double beam, double draft) {
+    public Vessel(String name, String imo, String category, double length, double beam, double draft) {
         this.name = name;
         this.imo = imo;
+        this.category = category;
         this.length = length;
         this.beam = beam;
         this.draft = draft;
@@ -38,6 +40,14 @@ public abstract class Vessel implements IDockable{
 
     public void setImo(String imo) {
         this.imo = imo;
+    }
+    
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public double getLength() {

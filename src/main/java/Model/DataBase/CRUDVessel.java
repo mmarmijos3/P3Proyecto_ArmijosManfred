@@ -6,7 +6,7 @@ import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CRUDVessel implements OperationsCRUD{
+public class CRUDVessel implements OperationsCRUD {
 
     private final MongoConnection mongo = MongoConnection.getInstance();
 
@@ -29,14 +29,16 @@ public class CRUDVessel implements OperationsCRUD{
         }
         return list;
     }
-    
+
     @Override
-    public Document find(String imo) {
+    public List<Document> find(String imo) {
+        List<Document> list = new ArrayList<>();
         try {
-            return mongo.getCollection().find(Filters.eq("imo", imo)).first();
+            mongo.getCollection().find(Filters.eq("imo", imo)).forEach(list::add);
         } catch (MongoException e) {
             throw new RuntimeException("Error SEARCH", e);
         }
+        return list;
     }
 
     @Override
@@ -60,7 +62,6 @@ public class CRUDVessel implements OperationsCRUD{
         }
     }
 
-
     @Override
     public void deleteCollection() {
         try {
@@ -70,7 +71,6 @@ public class CRUDVessel implements OperationsCRUD{
         }
     }
 
-    
     @Override
     public void deleteDatabase() {
         try {

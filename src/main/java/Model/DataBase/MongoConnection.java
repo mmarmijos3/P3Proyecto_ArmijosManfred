@@ -14,7 +14,7 @@ public class MongoConnection {
     private MongoClient mongoClient;
     private MongoDatabase database;
 
-    private final String DATABASE_NAME = "P2Proyecto_ArmijosManfred";
+    private final String DATABASE_NAME = "P3Proyecto_ArmijosManfred";
     private final String COLLECTION_NAME = "VesselQueue";
     private final String CLIENT_URL = "mongodb://localhost:27017";
 

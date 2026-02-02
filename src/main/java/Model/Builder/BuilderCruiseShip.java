@@ -20,6 +20,11 @@ public class BuilderCruiseShip implements Builder{
     public void setImo(String imo) {
         cruiseShip.setImo(imo);
     }
+    
+    @Override
+    public void setCategory(String category) {
+        cruiseShip.setCategory(category);
+    }
 
     @Override
     public void setLength(double length) {

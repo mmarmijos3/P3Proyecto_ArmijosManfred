@@ -13,7 +13,7 @@ public interface OperationsCRUD {
 
     public List<Document> read();
     
-    public Document find(String filter);
+    public List<Document> find(String filter);
     
     public void update(String filter, Document updates);
 

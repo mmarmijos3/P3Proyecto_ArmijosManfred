@@ -19,24 +19,24 @@ public class VesselConstructor {
     }
     
     private Vessel contructCruiseShip(String category, String name, String imo, int quantity) {
-        BuilderCruiseShip builder = new BuilderCruiseShip();
+        director.setBuilder(new BuilderCruiseShip());
         switch (category) {
-            case "SMALL" -> director.contructCruiseShipBoutique(builder, name, imo, quantity);
-            case "MEDIUM" -> director.contructCruiseShipStandard(builder, name, imo, quantity);
-            case "LARGE" -> director.contructCruiseShipMega(builder, name, imo, quantity);
-            case "EXTRALARGE" -> director.contructCruiseShipIcon(builder, name, imo, quantity);
+            case "SMALL" -> director.contructCruiseShipBoutique(name, imo, quantity);
+            case "MEDIUM" -> director.contructCruiseShipStandard(name, imo, quantity);
+            case "LARGE" -> director.contructCruiseShipMega(name, imo, quantity);
+            case "EXTRALARGE" -> director.contructCruiseShipIcon(name, imo, quantity);
         }
-        return builder.getResult();
+        return director.getBuilder().getResult();
     }
 
     private Vessel contructContainerShip(String category, String name, String imo, int quantity) {
-        BuilderContainerShip builder = new BuilderContainerShip();
+        director.setBuilder(new BuilderContainerShip());
         switch (category) {
-            case "SMALL" -> director.contructContainerShipFeeder(builder, name, imo, quantity);
-            case "MEDIUM" -> director.contructContainerShipPostPanamax(builder, name, imo, quantity);
-            case "LARGE" -> director.contructContainerShipNeopanamax(builder, name, imo, quantity);
-            case "EXTRALARGE" -> director.contructContainerShipUltraLarge(builder, name, imo, quantity);
+            case "SMALL" -> director.contructContainerShipFeeder(name, imo, quantity);
+            case "MEDIUM" -> director.contructContainerShipPostPanamax(name, imo, quantity);
+            case "LARGE" -> director.contructContainerShipNeopanamax(name, imo, quantity);
+            case "EXTRALARGE" -> director.contructContainerShipUltraLarge(name, imo, quantity);
         }
-        return builder.getResult();
+        return director.getBuilder().getResult();
     }
 }

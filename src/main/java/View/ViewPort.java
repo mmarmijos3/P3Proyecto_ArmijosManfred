@@ -1,6 +1,6 @@
 package View;
 
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,6 +20,9 @@ public class ViewPort extends javax.swing.JFrame {
         initComponents();
         setUndecorated(true);
         setLocationRelativeTo(null);
+        tblVesselQueue.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 18));
+        tblVesselQueue.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
+        tblVesselQueue.setRowHeight(28);
     }
     
     //<editor-fold defaultstate="collapsed" desc="BUTTONS">
@@ -179,7 +182,7 @@ public class ViewPort extends javax.swing.JFrame {
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="DATA TABLE">
-    public void loadDataToTable(ArrayList<Object[]> data) {
+    public void loadDataToTable(List<Object[]> data) {
         
         DefaultTableModel tableModel = (DefaultTableModel) tblVesselQueue.getModel();
         
@@ -220,6 +223,21 @@ public class ViewPort extends javax.swing.JFrame {
     
     public void enableTable(boolean state){
         tblVesselQueue.setEnabled(state);
+    }
+    // </editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="CLEAN">
+    public void cleanForm(){
+        cleanNameForm();
+        cleanIMOForm();
+        cleanTypeForm();
+        cleanCategoryForm();
+        cleanOccupancyForm();
+        cleanlErrorName();
+        cleanlErrorIMO();
+        cleanErrorType();
+        cleanErrorCategory();
+        cleanErrorOccupancy();
     }
     // </editor-fold>
    
@@ -371,6 +389,7 @@ public class ViewPort extends javax.swing.JFrame {
         btnUpdate.setBorder(null);
         btnUpdate.setBorderPainted(false);
         btnUpdate.setContentAreaFilled(false);
+        btnUpdate.setEnabled(false);
         jPanel2.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
 
         btnCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconCreate.png"))); // NOI18N
@@ -384,6 +403,8 @@ public class ViewPort extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblVesselQueue.setBackground(new java.awt.Color(30, 40, 53));
+        tblVesselQueue.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tblVesselQueue.setForeground(new java.awt.Color(255, 255, 255));
         tblVesselQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},

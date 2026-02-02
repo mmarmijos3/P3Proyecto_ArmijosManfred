@@ -13,6 +13,7 @@ public class DocumentManage {
         doc.append("imo", vessel.getImo());
         doc.append("name", vessel.getName());
         doc.append("type", vessel.getType());
+        doc.append("category", vessel.getCategory());
         doc.append("length", vessel.getLength());
         doc.append("beam", vessel.getBeam());
         doc.append("draft", vessel.getDraft());
@@ -54,16 +55,17 @@ public class DocumentManage {
     
     
     private Object[] docToArrayObj(Document doc){
-        Object[] dato = new Object[8];
+        Object[] dato = new Object[9];
 
         dato[0] = doc.getString("imo");
         dato[1] = doc.getString("name");
         dato[2] = doc.getString("type");
-        dato[3] = doc.getString("length");
-        dato[4] = doc.getString("beam");
-        dato[5] = doc.getString("draft");
-        dato[6] = doc.getString("capacity");
-        dato[7] = doc.getString("quantity");
+        dato[3] = doc.getString("category");
+//        dato[4] = doc.getDouble("length");
+//        dato[5] = doc.getDouble("beam");
+//        dato[6] = doc.getDouble("draft");
+//        dato[7] = doc.getInteger("capacity");
+        dato[4] = doc.getInteger("quantity");
 
         return dato;
     }

@@ -9,9 +9,18 @@ public class CruiseShip extends Vessel{
     private int passengerCapacity;
     private int passengers;
 
-    public CruiseShip(int passengerCapacity, int passengers, String name, 
-            String imo, double length, double beam, double draft) {
-        super(name, imo, length, beam, draft);
+    public CruiseShip(
+        int passengerCapacity, 
+        int passengers, 
+        String name, 
+        String imo, 
+        String category,
+        double length, 
+        double beam, 
+        double draft
+    ) 
+    {
+        super(name, imo, category, length, beam, draft);
         this.passengerCapacity = passengerCapacity;
         this.passengers = passengers;
     }
