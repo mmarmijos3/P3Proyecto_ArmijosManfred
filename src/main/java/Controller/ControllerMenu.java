@@ -37,8 +37,8 @@ public class ControllerMenu {
     }
     
     private void goToBills(){
-        viewMenu.setVisible(false);
-        MainController.showBills();    
+//        viewMenu.setVisible(false);
+//        MainController.showBills();    
     }
     
     private void goToLogin(){
