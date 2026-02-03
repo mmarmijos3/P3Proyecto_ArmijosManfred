@@ -1,5 +1,6 @@
 package Model.Command;
 
+import Model.Entities.Bill;
 import Model.Entities.Vessel;
 
 /**
@@ -7,10 +8,7 @@ import Model.Entities.Vessel;
  (Paso: The BillReceiver class contains some business logic)
  */
 public class BillReceiver {
-    private double subtotal = 0.0;
-    private double discount = 0.0;
-    private double impuesto = 0.0;
-    private double total = 0.0;
+    private Bill bill = new Bill();
     
     private static final double DOCK_FEE_CONTAINER_PER_METER = 2.5;
     private static final double DOCK_FEE_CRUISE_PER_METER = 4.0;
@@ -68,8 +66,8 @@ public class BillReceiver {
     }
     
     public double calculateDiscount(boolean op1, boolean op2) {
-        discount = subtotal * ((!op1 && !op2)? DISCOUNT_RATE_NO_OPERATION: 0);
-        return discount;
+        bill.calculateDiscount((!op1 && !op2)? DISCOUNT_RATE_NO_OPERATION: 0);
+        return bill.getDiscount();
     }
     
     
@@ -137,30 +135,20 @@ public class BillReceiver {
     }
     
     private void agregarCosto(double costo) {
-        subtotal += costo;
+        bill.setSubtotal(bill.getSubtotal() + costo);
     }
     
     public Object[] getBill() {
-        Object[] bill = new Object[4];
-        
-        bill[0] = subtotal;
-        bill[1] = discount;
-        bill[2] = impuesto;
-        bill[3] = total;
-        
-        return bill;
+        return bill.getInfoBill();
     }
     
     
     public void calculateBill() {
-        impuesto = subtotal * TAX_RATE;
-        total = subtotal + impuesto;
+        bill.calculateTax(TAX_RATE);
+        bill.calculateTotal();
     }
     
     public void reset() {
-        subtotal = 0.0;
-        discount = 0.0;
-        impuesto = 0.0;
-        total = 0.0;
+        bill.cleanBill();
     }
 }

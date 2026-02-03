@@ -3,73 +3,87 @@ package Model.DataBase;
 import com.mongodb.MongoException;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class CRUDBills {
+public class CRUDBills implements OperationsCRUD {
 
     private final MongoConnection mongo = MongoConnection.getInstance();
 
-    public boolean create(Document document) {
+    @Override
+    public void create(Document document) {
+        mongo.setCollectionName("Bills");
         try {
             mongo.getCollection().insertOne(document);
-            return true;
         } catch (MongoException e) {
-            System.err.println("Error al insertar: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error CREATE", e);
         }
     }
 
-    public List<Document> readAll() {
+    @Override
+    public List<Document> read() {
+        mongo.setCollectionName("Bills");
         List<Document> list = new ArrayList<>();
         try {
             mongo.getCollection().find().forEach(list::add);
         } catch (MongoException e) {
-            System.err.println("Error al leer: " + e.getMessage());
+            throw new RuntimeException("Error READ", e);
         }
         return list;
     }
 
-    public boolean deleteByImo(String imo) {
+    @Override
+    public List<Document> find(String imo) {
+        mongo.setCollectionName("Bills");
+        List<Document> list = new ArrayList<>();
+        try {
+            mongo.getCollection().find(Filters.eq("imo", imo)).forEach(list::add);
+        } catch (MongoException e) {
+            throw new RuntimeException("Error SEARCH", e);
+        }
+        return list;
+    }
+
+    @Override
+    public void delete(String imo) {
+        mongo.setCollectionName("Bills");
         try {
             mongo.getCollection().deleteOne(Filters.eq("imo", imo));
-            return true;
         } catch (MongoException e) {
-            System.err.println("Error al eliminar: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error DELETE ONE", e);
         }
     }
 
-    public boolean updateByImo(String imo, Document updates) {
+    @Override
+    public void update(String imo, Document updates) {
+        mongo.setCollectionName("Bills");
         try {
             mongo.getCollection().updateOne(
                 Filters.eq("imo", imo),
                 new Document("$set", updates)
             );
-            return true;
         } catch (MongoException e) {
-            System.err.println("Error al actualizar: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error UPDATE", e);
         }
     }
 
-    public Document findByImo(String imo) {
-        try {
-            return mongo.getCollection().find(Filters.eq("imo", imo)).first();
-        } catch (MongoException e) {
-            System.err.println("Error al buscar: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public boolean clearQueue() {
+    @Override
+    public void deleteCollection() {
+        mongo.setCollectionName("Bills");
         try {
             mongo.getCollection().deleteMany(new Document());
-            return true;
         } catch (MongoException e) {
-            System.err.println("Error al limpiar cola: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Error al borrar coleccion", e);
+        }
+    }
+
+    @Override
+    public void deleteDatabase() {
+        mongo.setCollectionName("Bills");
+        try {
+            mongo.getCollection().drop();
+        } catch (MongoException e) {
+            throw new RuntimeException("Error DROP", e);
         }
     }
 }

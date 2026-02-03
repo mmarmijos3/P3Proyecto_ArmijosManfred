@@ -15,7 +15,7 @@ public class MongoConnection {
     private MongoDatabase database;
 
     private final String DATABASE_NAME = "P3Proyecto_ArmijosManfred";
-    private final String COLLECTION_NAME = "VesselQueue";
+    private String collectionName = "Bills";
     private final String CLIENT_URL = "mongodb://localhost:27017";
 
     private MongoConnection() {
@@ -25,9 +25,9 @@ public class MongoConnection {
             
             if (!database.listCollectionNames()
                     .into(new ArrayList<>())
-                    .contains(COLLECTION_NAME)) {
+                    .contains(collectionName)) {
 
-                database.createCollection(COLLECTION_NAME);
+                database.createCollection(collectionName);
             }
             
         } catch (MongoException e) {
@@ -43,7 +43,11 @@ public class MongoConnection {
     }
 
     public MongoCollection<Document> getCollection() {
-        return database.getCollection(COLLECTION_NAME);
+        return database.getCollection(collectionName);
+    }
+    
+    public void setCollectionName(String name){
+        collectionName = name;
     }
 
     public void closeDatabase() {

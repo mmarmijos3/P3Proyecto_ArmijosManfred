@@ -19,8 +19,7 @@ public class ModelPort {
         this.constructor = new VesselConstructor();
         this.docManager = new DocumentManage();
     }
-    
-    
+
 
     private Document documentVessel(Vessel vessel){
         return docManager.documentVessel(vessel);

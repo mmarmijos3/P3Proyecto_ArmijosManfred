@@ -23,6 +23,17 @@ public class DocumentManage {
         return doc;
     }
     
+    public Document documentBill(Object[] bill){
+        Document doc = new Document();
+        
+        doc.append("imo", bill[0]);
+        doc.append("name", bill[1]);
+        doc.append("type", bill[2]);
+        doc.append("total", bill[3]);
+  
+        return doc;
+    }
+    
     
     private Object[] docToArrayObj(Document doc){
         Object[] dato = new Object[9];

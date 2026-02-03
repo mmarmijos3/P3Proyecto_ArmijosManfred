@@ -17,11 +17,12 @@ public class ViewDock extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    public JButton getBtnGoMenu() {
-        return btnBack;
-    }
     
     //<editor-fold defaultstate="collapsed" desc="BUTTONS">
+    public JButton getBtnDock() {
+        return btnDock;
+    }
+    
     public JButton getBtnBack() {
         return btnBack;
     }

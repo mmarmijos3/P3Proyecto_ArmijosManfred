@@ -12,6 +12,7 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public void create(Document document) {
+        mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().insertOne(document);
         } catch (MongoException e) {
@@ -21,6 +22,7 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public List<Document> read() {
+        mongo.setCollectionName("VesselQueue");
         List<Document> list = new ArrayList<>();
         try {
             mongo.getCollection().find().forEach(list::add);
@@ -32,6 +34,7 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public List<Document> find(String imo) {
+        mongo.setCollectionName("VesselQueue");
         List<Document> list = new ArrayList<>();
         try {
             mongo.getCollection().find(Filters.eq("imo", imo)).forEach(list::add);
@@ -43,6 +46,7 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public void delete(String imo) {
+        mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().deleteOne(Filters.eq("imo", imo));
         } catch (MongoException e) {
@@ -52,6 +56,7 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public void update(String imo, Document updates) {
+        mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().updateOne(
                 Filters.eq("imo", imo),
@@ -64,6 +69,7 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public void deleteCollection() {
+        mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().deleteMany(new Document());
         } catch (MongoException e) {
@@ -73,6 +79,7 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public void deleteDatabase() {
+        mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().drop();
         } catch (MongoException e) {

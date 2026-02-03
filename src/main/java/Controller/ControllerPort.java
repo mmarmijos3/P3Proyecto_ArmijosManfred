@@ -24,7 +24,6 @@ public class ControllerPort {
     }
     
     private void prepareButtons(){
-        
         viewPort.getBtnCreate()         .addActionListener(e -> saveVessel());
         viewPort.getBtnUpdate()         .addActionListener(e -> updateVessel());
         viewPort.getBtnDelete()         .addActionListener(e -> deleteVessel());
