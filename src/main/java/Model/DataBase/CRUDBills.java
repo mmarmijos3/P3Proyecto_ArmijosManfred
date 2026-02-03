@@ -5,6 +5,7 @@ import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 public class CRUDBills implements OperationsCRUD {
 
@@ -45,21 +46,21 @@ public class CRUDBills implements OperationsCRUD {
     }
 
     @Override
-    public void delete(String imo) {
+    public void delete(Object id) {
         mongo.setCollectionName("Bills");
         try {
-            mongo.getCollection().deleteOne(Filters.eq("imo", imo));
+            mongo.getCollection().deleteOne(Filters.eq("_id", (ObjectId)id));
         } catch (MongoException e) {
             throw new RuntimeException("Error DELETE ONE", e);
         }
     }
 
     @Override
-    public void update(String imo, Document updates) {
+    public void update(Object id, Document updates) {
         mongo.setCollectionName("Bills");
         try {
             mongo.getCollection().updateOne(
-                Filters.eq("imo", imo),
+                Filters.eq("_id", (ObjectId)id),
                 new Document("$set", updates)
             );
         } catch (MongoException e) {

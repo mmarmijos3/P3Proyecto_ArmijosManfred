@@ -8,13 +8,13 @@ import Model.Entities.Vessel;
 import java.util.List;
 import org.bson.Document;
 
-public class ModelPort {
+public class FacadelPort {
     
     private OperationsCRUD crud;
     private VesselConstructor constructor;
     private DocumentManage docManager;
 
-    public ModelPort() {
+    public FacadelPort() {
         this.crud = new CRUDVessel();
         this.constructor = new VesselConstructor();
         this.docManager = new DocumentManage();
@@ -38,11 +38,11 @@ public class ModelPort {
     }
     
     public List<Object[]> getAllQueue(){
-        return docManager.docListToObjList(crud.read());
+        return docManager.listToVessels(crud.read());
     }
     
     public List<Object[]> searchVesselInQueue(String imo){
-        return docManager.docListToObjList(crud.find(imo));
+        return docManager.listToVessels(crud.find(imo));
     }
     
     public void deleteVesselInQueue(String imo){

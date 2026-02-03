@@ -34,8 +34,30 @@ public class DocumentManage {
         return doc;
     }
     
+    private Object[] docToBill(Document doc){
+        Object[] dato = new Object[9];
+
+        dato[0] = doc.getObjectId("_id");
+        dato[1] = doc.getString("imo");
+        dato[2] = doc.getString("name");
+        dato[3] = doc.getString("type");
+        dato[4] = doc.getDouble("total");
+
+        return dato;
+    }
     
-    private Object[] docToArrayObj(Document doc){
+    public List<Object[]> listToBills(List<Document> documentos){
+        List<Object[]> datos = new ArrayList<>();
+        
+        for (Document doc : documentos){
+            datos.add(docToBill(doc));
+        }
+        
+        return datos;
+    }
+    
+    
+    private Object[] docToVessel(Document doc){
         Object[] dato = new Object[9];
 
         dato[0] = doc.getString("imo");
@@ -47,11 +69,11 @@ public class DocumentManage {
         return dato;
     }
     
-    public List<Object[]> docListToObjList(List<Document> documentos){
+    public List<Object[]> listToVessels(List<Document> documentos){
         List<Object[]> datos = new ArrayList<>();
         
         for (Document doc : documentos){
-            datos.add(docToArrayObj(doc));
+            datos.add(docToVessel(doc));
         }
         
         return datos;

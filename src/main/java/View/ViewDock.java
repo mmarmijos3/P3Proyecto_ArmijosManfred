@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +16,10 @@ public class ViewDock extends javax.swing.JFrame {
         initComponents();
         setUndecorated(true);
         setLocationRelativeTo(null);
+        tblBills.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 18));
+        tblBills.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
+        tblBills.getTableHeader().setBackground(Color.white);
+        tblBills.setRowHeight(28);
     }
 
     
@@ -54,7 +59,7 @@ public class ViewDock extends javax.swing.JFrame {
 
 
     public JButton getBtnUpdate() {
-        return btnClean;
+        return btnPayUpdate;
     }
     // </editor-fold>
     
@@ -283,6 +288,11 @@ public class ViewDock extends javax.swing.JFrame {
         cleanOperations();
         cleanExtras();
     }
+    
+    public void cleanServices(){
+        cleanOperations();
+        cleanExtras();
+    }
     // </editor-fold>
     
 
@@ -483,11 +493,13 @@ public class ViewDock extends javax.swing.JFrame {
         btnPayUpdate.setBorder(null);
         btnPayUpdate.setBorderPainted(false);
         btnPayUpdate.setContentAreaFilled(false);
+        btnPayUpdate.setEnabled(false);
         jPanel1.add(btnPayUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 650, 100, 50));
 
         btnPaySave.setBorder(null);
         btnPaySave.setBorderPainted(false);
         btnPaySave.setContentAreaFilled(false);
+        btnPaySave.setEnabled(false);
         jPanel1.add(btnPaySave, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 650, 100, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDock.png"))); // NOI18N

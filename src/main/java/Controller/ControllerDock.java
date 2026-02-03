@@ -1,7 +1,8 @@
 
 package Controller;
 
-import Model.ModelDock;
+import Model.FacadeDock;
+import Model.FacadelPort;
 import View.ViewDock;
 
 /**
@@ -10,16 +11,17 @@ import View.ViewDock;
  */
 public class ControllerDock {
     private ViewDock viewDock;
-    private ModelDock modelDock;
+    private FacadeDock modelDock;
 
     public ControllerDock(ViewDock viewDock) {
         this.viewDock = viewDock;
-        this.modelDock = new ModelDock();
+        this.modelDock = new FacadeDock();
         prepareButtons();
     }
 
     public void showViewDock(){
         viewDock.setVisible(true);
+        sendDataToTable();
     }
     
     private void prepareButtons(){
@@ -29,13 +31,27 @@ public class ControllerDock {
         viewDock.getBtnDelete()         .addActionListener(e -> deleteVessel());
         viewDock.getBtnDelCollection()  .addActionListener(e -> deleteCollection());
         viewDock.getBtnDelDB()          .addActionListener(e -> deleteDatabase());
-        viewDock.getBtnEdit()           .addActionListener(e -> editBill());
+        //viewDock.getBtnEdit()           .addActionListener(e -> editBill());
         viewDock.getBtnCleanServices()  .addActionListener(e -> cleanServices());
         viewDock.getBtnBack()           .addActionListener(e -> goToMenu());
     }
     
     private void dockVessel(){
-        modelDock.dockVessel();
+        try {
+            showDockInfo();
+            modelDock.dockVessel();
+            viewDock.getBtnPaySave().setEnabled(true);
+        } catch (Exception e) {
+            System.out.println("Empty Queue");
+        }
+        
+    }
+    
+    private void showDockInfo(){
+        Object[] info = modelDock.takeFirstVesseInfo();
+        viewDock.setServNameForm(info[0].toString());
+        viewDock.setServIMOForm(info[1].toString());
+        viewDock.setServTypeForm(info[2].toString());
     }
     
     private void goToMenu() {
@@ -48,7 +64,8 @@ public class ControllerDock {
     }
     
     public void cleanServices() {
-        viewDock.cleanOperations();
+        viewDock.cleanServices();
+        viewDock.getBtnPaySave().setEnabled(false);
     }
     
 //    public void addVesselInQueue(String type, String category, String name, String imo, int occupancy) {
@@ -64,6 +81,8 @@ public class ControllerDock {
                 viewDock.isSelectedRefuel()
             );
         sendDataToTable();
+        modelDock.resetBill();
+        viewDock.cleanAll();
     }
     
     public void editBill() {
@@ -95,6 +114,7 @@ public class ControllerDock {
     
     public void updateVessel(){            
         modelDock.updateBill(
+            viewDock.getIDToEdit(),
             viewDock.getLoading(), 
             viewDock.getUnloading(), 
             viewDock.isSelectedClean(), 
@@ -107,11 +127,15 @@ public class ControllerDock {
         viewDock.enableTable(true);
 
         sendDataToTable();
+        
+        modelDock.resetBill();
+        
+        viewDock.cleanAll();
     }
     
     private void deleteVessel(){
         if(viewDock.isAnyBillSelected()){
-            modelDock.deleteBill(viewDock.getIMOToEdit().toString());
+            modelDock.deleteBill(viewDock.getIDToEdit());
             sendDataToTable();
             viewDock.clearBillSelection();
         }

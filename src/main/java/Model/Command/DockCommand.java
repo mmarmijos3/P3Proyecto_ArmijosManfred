@@ -5,17 +5,15 @@ import Model.Entities.Vessel;
 public class DockCommand implements Command{
     private BillReceiver receiver;
     private Vessel vessel;
-    private boolean isSelected;
 
-    public DockCommand(BillReceiver receiver, Vessel vessel, boolean isSelected) {
+    public DockCommand(BillReceiver receiver, Vessel vessel) {
         this.receiver = receiver;
         this.vessel = vessel;
-        this.isSelected = isSelected;
     }
     
         @Override
     public void execute() {
-        receiver.aplicarAtraque(vessel, isSelected);
+        receiver.aplicarAtraque(vessel);
     }
     
 }

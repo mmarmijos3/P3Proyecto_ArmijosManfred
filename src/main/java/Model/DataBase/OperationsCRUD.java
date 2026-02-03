@@ -15,9 +15,9 @@ public interface OperationsCRUD {
     
     public List<Document> find(String filter);
     
-    public void update(String filter, Document updates);
+    public void update(Object filter, Document updates);
 
-    public void delete(String filter);
+    public void delete(Object filter);
     
     public void deleteCollection();
 

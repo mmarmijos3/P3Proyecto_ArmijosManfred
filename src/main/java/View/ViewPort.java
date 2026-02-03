@@ -410,7 +410,7 @@ public class ViewPort extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "IMO", "Name", "Type", "Category", "Occupancy %"
+                "IMO", "Name", "Type", "Category", "Occupancy"
             }
         ) {
             boolean[] canEdit = new boolean [] {

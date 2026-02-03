@@ -45,7 +45,7 @@ public class CRUDVessel implements OperationsCRUD {
     }
 
     @Override
-    public void delete(String imo) {
+    public void delete(Object imo) {
         mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().deleteOne(Filters.eq("imo", imo));
@@ -55,7 +55,7 @@ public class CRUDVessel implements OperationsCRUD {
     }
 
     @Override
-    public void update(String imo, Document updates) {
+    public void update(Object imo, Document updates) {
         mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().updateOne(

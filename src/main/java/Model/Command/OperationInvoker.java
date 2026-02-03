@@ -13,6 +13,7 @@ public class OperationInvoker {
     public void executeCommands(){
         if(!commands.isEmpty()){
             this.commands.forEach(c -> c.execute());
+            commands.clear();
         }
     }
 }

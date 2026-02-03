@@ -8,11 +8,15 @@ import Model.Entities.Vessel;
  (Paso: The BillReceiver class contains some business logic)
  */
 public class BillReceiver {
-    private Bill bill = new Bill();
-    
-    private static final double DOCK_FEE_CONTAINER_PER_METER = 2.5;
-    private static final double DOCK_FEE_CRUISE_PER_METER = 4.0;
-    private static final double CONTAINER_HANDLING_FEE = 2.75;
+    private Bill bill;
+
+    public BillReceiver() {
+        this.bill = new Bill();
+    }
+
+    private static final double DOCK_FEE_CONTAINER_PER_METER = 0.25;
+    private static final double DOCK_FEE_CRUISE_PER_METER = 0.15;
+    private static final double CONTAINER_HANDLING_FEE = 0.75;
     private static final double PASSENGER_TAX = 1.30;
     private static final double REFUEL_CONTAINER = 1500.0;
     private static final double REFUEL_CRUISE = 3000.0;
@@ -24,8 +28,8 @@ public class BillReceiver {
     private static final double TAX_RATE = 0.15; // 15% IVA
     
  
-    public void aplicarAtraque(Vessel vessel, boolean isSelected) {
-        if(isSelected) agregarCosto(calcularCostoDock(vessel));
+    public void aplicarAtraque(Vessel vessel) {
+        agregarCosto(calcularCostoDock(vessel));
     }
     
     public void applyDiscount(boolean op1, boolean op2) {
@@ -95,13 +99,12 @@ public class BillReceiver {
     }
     
     private double calcularCostoLimpieza(Vessel vessel) {
-        double area = calculateVesselArea(vessel);
         switch(vessel.getType()){
             case "CONTAINER" -> {
-                return area * CLEAN_CONTAINER; 
+                return CLEAN_CONTAINER; 
             } 
             default -> {
-                return area * CLEAN_CRUISE;
+                return CLEAN_CRUISE;
             }
         }
     }
@@ -117,15 +120,13 @@ public class BillReceiver {
         }
     }
     
-    private double calcularCostoMantenimiento(Vessel vessel) {
-        double area = calculateVesselArea(vessel);
-        
+    private double calcularCostoMantenimiento(Vessel vessel) {        
         switch(vessel.getType()){
             case "CONTAINER" -> {
-                return area * MAINTENANCE_CONTAINER; 
+                return MAINTENANCE_CONTAINER; 
             } 
             default -> {
-                return area * MAINTENANCE_CRUISE;
+                return MAINTENANCE_CRUISE;
             }
         }
     }
@@ -139,6 +140,7 @@ public class BillReceiver {
     }
     
     public Object[] getBill() {
+        calculateBill();
         return bill.getInfoBill();
     }
     

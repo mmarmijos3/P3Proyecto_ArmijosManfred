@@ -1,7 +1,7 @@
 
 package Controller;
 
-import Model.ModelPort;
+import Model.FacadelPort;
 import View.ViewPort;
 
 /**
@@ -10,11 +10,11 @@ import View.ViewPort;
  */
 public class ControllerPort {
     private ViewPort viewPort;
-    private ModelPort modelPort;
+    private FacadelPort modelPort;
 
     public ControllerPort(ViewPort viewPort) {
         this.viewPort = viewPort;
-        this.modelPort = new ModelPort();
+        this.modelPort = new FacadelPort();
         prepareButtons();
     }
 

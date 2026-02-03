@@ -11,6 +11,5 @@ import View.ViewLogin;
 public class Main {
     public static void main(String[] args){
         MainController.showLogin();
-        //new ViewLogin().setVisible(true);
     }
 }

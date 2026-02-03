@@ -17,7 +17,7 @@ import org.bson.Document;
  *
  * @author Manfred Armijos
  */
-public class ModelDock {
+public class FacadeDock {
        
     private OperationsCRUD crud;
     private DocumentManage docManager;
@@ -26,7 +26,7 @@ public class ModelDock {
     private BillReceiver receiver;
     private OperationInvoker invoker;
 
-    public ModelDock() {
+    public FacadeDock() {
         this.crud = new CRUDBills();
         this.docManager = new DocumentManage();
         this.constructor = new VesselConstructor();
@@ -48,21 +48,21 @@ public class ModelDock {
         crud.create(documentBill());
     }
     
-    public void updateBill(boolean l,boolean u,boolean c,boolean m,boolean r) {
+    public void updateBill(Object id, boolean l,boolean u,boolean c,boolean m,boolean r) {
         onCommands(l, u, c, m, r);
-        crud.update(vessel.getImo(), documentBill());
+        crud.update(id, documentBill());
     }
     
     public List<Object[]> getAllBills(){
-        return docManager.docListToObjList(crud.read());
+        return docManager.listToBills(crud.read());
     }
     
     public List<Object[]> searchBill(String imo){
-        return docManager.docListToObjList(crud.find(imo));
+        return docManager.listToBills(crud.find(imo));
     }
     
-    public void deleteBill(String imo){
-        crud.delete(imo);
+    public void deleteBill(Object id){
+        crud.delete(id);
     }
     
     public void deleteQueue(){
@@ -75,26 +75,38 @@ public class ModelDock {
     
     private void setVesselInfo(Object[] info){
         this.vessel = constructor.contructFromDoc(info);
+        
     }
     
-    private Object[] takeFirstVesseInfo(){
-        return docManager.docListToObjList(new CRUDVessel().read()).getFirst();
+    public Object[] takeFirstVesseInfo(){
+        try {
+            return docManager.docToVesselInfo(new CRUDVessel().read().getFirst());
+        } catch (Exception e) {
+            return null;
+        }
+        
     }
     
     public void dockVessel(){
         if(takeFirstVesseInfo() != null){
             setVesselInfo(takeFirstVesseInfo());
+            new FacadelPort().deleteVesselInQueue(vessel.getImo());
         }
     }
     
     
     private void onCommands(boolean l,boolean u,boolean c,boolean m,boolean r){
+        dockFeeVessel();
         loadVessel(l);
         unloadcleanVessel(u);
         cleanVessel(c);
         maintenanceVessel(m);
         refuelVessel(r);
         invoker.executeCommands();
+    }
+    
+    private void dockFeeVessel(){
+        invoker.addCommand(new DockCommand(receiver, vessel));
     }
     
     private void loadVessel(boolean load){
@@ -131,10 +143,8 @@ public class ModelDock {
         return fullBill;
     }
     
-
-    
-    
-    
-    
+    public void resetBill(){
+        receiver.reset();
+    }
     
 }
