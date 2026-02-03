@@ -1,7 +1,6 @@
 package Main;
 
 import Controller.MainController;
-import View.ViewLogin;
 
 /**
  *
