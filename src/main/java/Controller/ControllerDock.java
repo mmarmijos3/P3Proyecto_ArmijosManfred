@@ -2,7 +2,6 @@
 package Controller;
 
 import Model.FacadeDock;
-import Model.FacadelPort;
 import View.ViewDock;
 
 /**
@@ -27,11 +26,10 @@ public class ControllerDock {
     private void prepareButtons(){
         viewDock.getBtnDock()           .addActionListener(e -> dockVessel());
         viewDock.getBtnPaySave()        .addActionListener(e -> saveVessel());
-        viewDock.getBtnUpdate()         .addActionListener(e -> updateVessel());
+        viewDock.getBtnCalculate()      .addActionListener(e -> calculateBill());
         viewDock.getBtnDelete()         .addActionListener(e -> deleteVessel());
         viewDock.getBtnDelCollection()  .addActionListener(e -> deleteCollection());
         viewDock.getBtnDelDB()          .addActionListener(e -> deleteDatabase());
-        //viewDock.getBtnEdit()           .addActionListener(e -> editBill());
         viewDock.getBtnCleanServices()  .addActionListener(e -> cleanServices());
         viewDock.getBtnBack()           .addActionListener(e -> goToMenu());
     }
@@ -104,12 +102,16 @@ public class ControllerDock {
     
     
     private void editionMode(boolean edicion){
-        viewDock.getBtnUpdate().setEnabled(edicion);
+        viewDock.getBtnCalculate().setEnabled(edicion);
         viewDock.getBtnEdit().setEnabled(!edicion);
         viewDock.getBtnPaySave().setEnabled(!edicion);
         viewDock.getBtnDelete().setEnabled(!edicion);
         viewDock.getBtnDelCollection().setEnabled(!edicion);
         viewDock.getBtnDelDB().setEnabled(!edicion);
+    }
+    
+    public void calculateBill(){
+        
     }
     
     public void updateVessel(){            

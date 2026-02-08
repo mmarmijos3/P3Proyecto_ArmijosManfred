@@ -9,15 +9,17 @@ import org.bson.Document;
  */
 public interface OperationsCRUD {
     
+    public void setCollection(String collection);
+    
     public void create(Document document);
 
     public List<Document> read();
     
-    public List<Document> find(String filter);
+    public List<Document> find(String key, String filter);
     
-    public void update(Object filter, Document updates);
+    public void update(String key, Object filter, Document updates);
 
-    public void delete(Object filter);
+    public void delete(String key, Object filter);
     
     public void deleteCollection();
 

@@ -5,7 +5,6 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import java.util.ArrayList;
 import org.bson.Document;
 
 public class MongoConnection {
@@ -15,20 +14,21 @@ public class MongoConnection {
     private MongoDatabase database;
 
     private final String DATABASE_NAME = "P3Proyecto_ArmijosManfred";
-    private String collectionName = "Bills";
+    private String collectionName;
     private final String CLIENT_URL = "mongodb://localhost:27017";
 
+    
     private MongoConnection() {
         try {
             mongoClient = MongoClients.create(CLIENT_URL);
             database = mongoClient.getDatabase(DATABASE_NAME);
             
-            if (!database.listCollectionNames()
-                    .into(new ArrayList<>())
-                    .contains(collectionName)) {
-
-                database.createCollection(collectionName);
-            }
+//            if (!database.listCollectionNames()
+//                    .into(new ArrayList<>())
+//                    .contains(collectionName)) {
+//
+//                createCollections();
+//            }
             
         } catch (MongoException e) {
             throw new RuntimeException("Error connecting to MongoDB", e);

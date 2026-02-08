@@ -5,9 +5,8 @@ import Model.Builder.VesselConstructor;
 import Model.Command.BillReceiver;
 import Model.Command.*;
 import Model.Command.OperationInvoker;
-import Model.DataBase.CRUDBills;
-import Model.DataBase.CRUDVessel;
 import Model.DataBase.DocumentManage;
+import Model.DataBase.MongoCRUD;
 import Model.DataBase.OperationsCRUD;
 import Model.Entities.Vessel;
 import java.util.List;
@@ -27,7 +26,7 @@ public class FacadeDock {
     private OperationInvoker invoker;
 
     public FacadeDock() {
-        this.crud = new CRUDBills();
+        this.crud = new MongoCRUD("Bills");
         this.docManager = new DocumentManage();
         this.constructor = new VesselConstructor();
         this.vessel = null;
@@ -50,7 +49,7 @@ public class FacadeDock {
     
     public void updateBill(Object id, boolean l,boolean u,boolean c,boolean m,boolean r) {
         onCommands(l, u, c, m, r);
-        crud.update(id, documentBill());
+        crud.update("_id",id, documentBill());
     }
     
     public List<Object[]> getAllBills(){
@@ -58,11 +57,11 @@ public class FacadeDock {
     }
     
     public List<Object[]> searchBill(String imo){
-        return docManager.listToBills(crud.find(imo));
+        return docManager.listToBills(crud.find("_id",imo));
     }
     
     public void deleteBill(Object id){
-        crud.delete(id);
+        crud.delete("_id",id);
     }
     
     public void deleteQueue(){
@@ -79,10 +78,14 @@ public class FacadeDock {
     }
     
     public Object[] takeFirstVesseInfo(){
+        crud.setCollection("VesselQueue");
         try {
-            return docManager.docToVesselInfo(new CRUDVessel().read().getFirst());
+            return docManager.docToVesselInfo(crud.read().getFirst());
         } catch (Exception e) {
             return null;
+        }
+        finally{
+            crud.setCollection("Bills");
         }
         
     }

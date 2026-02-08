@@ -58,7 +58,7 @@ public class ViewDock extends javax.swing.JFrame {
     }
 
 
-    public JButton getBtnUpdate() {
+    public JButton getBtnCalculate() {
         return btnPayUpdate;
     }
     // </editor-fold>

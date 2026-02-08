@@ -5,14 +5,19 @@ import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.types.ObjectId;
 
-public class CRUDVessel implements OperationsCRUD {
+public class MongoCRUD implements OperationsCRUD {
 
-    private final MongoConnection mongo = MongoConnection.getInstance();
+    private final MongoConnection mongo;
+
+    public MongoCRUD(String collectionName) {
+        this.mongo = MongoConnection.getInstance();
+        mongo.setCollectionName(collectionName);
+    }
 
     @Override
     public void create(Document document) {
-        mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().insertOne(document);
         } catch (MongoException e) {
@@ -22,7 +27,6 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public List<Document> read() {
-        mongo.setCollectionName("VesselQueue");
         List<Document> list = new ArrayList<>();
         try {
             mongo.getCollection().find().forEach(list::add);
@@ -33,11 +37,10 @@ public class CRUDVessel implements OperationsCRUD {
     }
 
     @Override
-    public List<Document> find(String imo) {
-        mongo.setCollectionName("VesselQueue");
+    public List<Document> find(String key, String imo) {
         List<Document> list = new ArrayList<>();
         try {
-            mongo.getCollection().find(Filters.eq("imo", imo)).forEach(list::add);
+            mongo.getCollection().find(Filters.eq(key, imo)).forEach(list::add);
         } catch (MongoException e) {
             throw new RuntimeException("Error SEARCH", e);
         }
@@ -45,21 +48,19 @@ public class CRUDVessel implements OperationsCRUD {
     }
 
     @Override
-    public void delete(Object imo) {
-        mongo.setCollectionName("VesselQueue");
+    public void delete(String key, Object id) {
         try {
-            mongo.getCollection().deleteOne(Filters.eq("imo", imo));
+            mongo.getCollection().deleteOne(Filters.eq(key, (ObjectId)id));
         } catch (MongoException e) {
             throw new RuntimeException("Error DELETE ONE", e);
         }
     }
 
     @Override
-    public void update(Object imo, Document updates) {
-        mongo.setCollectionName("VesselQueue");
+    public void update(String key, Object id, Document updates) {
         try {
             mongo.getCollection().updateOne(
-                Filters.eq("imo", imo),
+                Filters.eq(key, (ObjectId)id),
                 new Document("$set", updates)
             );
         } catch (MongoException e) {
@@ -69,7 +70,6 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public void deleteCollection() {
-        mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().deleteMany(new Document());
         } catch (MongoException e) {
@@ -79,11 +79,15 @@ public class CRUDVessel implements OperationsCRUD {
 
     @Override
     public void deleteDatabase() {
-        mongo.setCollectionName("VesselQueue");
         try {
             mongo.getCollection().drop();
         } catch (MongoException e) {
             throw new RuntimeException("Error DROP", e);
         }
+    }
+
+    @Override
+    public void setCollection(String name){
+        mongo.setCollectionName(name);
     }
 }
